@@ -1,8 +1,10 @@
 NAME = malloc
 VERSION = 1.0.4
 CFLAGS = -Wall -Werror -Wextra -g
+INCLUDES = -I./inc/
 
 SRC =	test/main.c					\
+		src/ft_malloc.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -12,7 +14,7 @@ $(NAME): $(OBJ)
 	@gcc $(CFLAGS) $(INCLUDES) -o $(NAME) $(OBJ) $(LIBS) -lpthread
 	@echo This Job is Done sir !
 
-%.o: %.c inc/ft_malloc.h
+%.o: %.c 
 	@gcc $(CFLAGS) $(INCLUDES) -o $@ -c $<
 
 clean:
