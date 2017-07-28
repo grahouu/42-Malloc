@@ -20,7 +20,7 @@ t_meta  new_memory_range(size_t size)
     return (memory_range);
 }
 
-t_meta  new_memory_meta_range(void)
+t_meta  new_meta_range(void)
 {
     t_meta new;
     
@@ -29,20 +29,27 @@ t_meta  new_memory_meta_range(void)
     return (new);
 }
 
-t_meta  *find_first_none_meta_data(void)
+t_meta  *find_first_none_meta_data_in_meta_range(t_meta meta_range)
 {
     size_t i;
     t_meta *it;
 
-    it = (t_meta*)mem_meta_data.ptr;
+    it = (t_meta*)meta_range.ptr;
     i = 0;
-    while (i < mem_meta_data.size / sizeof(t_meta))
+    while (i < meta_range.size / sizeof(t_meta) - 1)
     {
         if (it[i].type == NONE)
             return (&(it[i]));
         ++i;
     }
-    return (NULL);
+    if (it[i].type == NONE)
+        it[i] = new_meta_range();
+    return (find_first_none_meta_data_in_meta_range(it[i]));
+}
+
+t_meta  *find_first_none_meta_data(void)
+{
+    return (find_first_none_meta_data_in_meta_range(mem_meta_data));
 }
 
 t_bool is_slice_in_range(const t_meta slice, const t_meta range)
@@ -126,7 +133,7 @@ void    *new_memory_slice(size_t size)
     }
     slice = find_first_none_meta_data();
     slice->type = SLICE;
-    slice->ptr = find_empty_mem_in_range(*range); // <-- not opti
+    slice->ptr = find_empty_mem_in_range(*range);
     slice->size = size;
     return(slice->ptr);
 }
@@ -134,6 +141,6 @@ void    *new_memory_slice(size_t size)
 void    *ft_malloc(size_t size)
 {
     if (mem_meta_data.type == NONE)
-        mem_meta_data = new_memory_meta_range();
+        mem_meta_data = new_meta_range();
     return (new_memory_slice(size));
 }
