@@ -1,6 +1,7 @@
 #include "ft_malloc_private.h"
-#include <unistd.h>
 #include <sys/mman.h>
+
+t_meta mem_meta_data = {.type = NONE, .ptr = NULL, .size = 0};
 
 t_meta  new_memory_range(size_t size)
 {
@@ -27,8 +28,8 @@ void    init_malloc(void)
 void    *ft_malloc(size_t size)
 {
     (void)size;
-    if (mem_meta_data.ptr == NULL)
+    if (mem_meta_data.type == NONE)
         init_malloc();
-
+    print_mem_meta_data();
     return (NULL);
 }

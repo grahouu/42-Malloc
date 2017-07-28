@@ -4,7 +4,8 @@ CFLAGS = -Wall -Werror -Wextra -g
 INCLUDES = -I./inc/
 
 SRC =	test/main.c					\
-		src/ft_malloc.c
+		src/ft_malloc.c				\
+		src/print_mem_meta_data.c	\
 
 OBJ = $(SRC:.c=.o)
 
