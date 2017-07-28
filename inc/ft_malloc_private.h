@@ -12,7 +12,13 @@ typedef enum e_type
     RANGE,
     NEXT,
     FREE
-}       t_type;  
+}       t_type;
+
+typedef enum e_bool
+{
+    FALSE = 0,
+    TRUE = 1
+}   t_bool;
 
 typedef struct s_meta
 {
