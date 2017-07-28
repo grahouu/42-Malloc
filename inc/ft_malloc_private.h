@@ -4,10 +4,11 @@
 
 #include <unistd.h>
 # include <stddef.h>
+#include <stdio.h> //norme
 typedef enum e_type
 {
     NONE,
-    MEM,
+    SLICE,
     RANGE,
     NEXT,
     FREE

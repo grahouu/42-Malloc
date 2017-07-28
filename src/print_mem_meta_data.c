@@ -3,8 +3,8 @@
 
 static const char    *type_to_str(t_type t)
 {
-    if (t == MEM)
-        return ("MEM");
+    if (t == SLICE)
+        return ("SLICE");
     else if (t == RANGE)
         return ("RANGE");
     else if (t == NEXT)
