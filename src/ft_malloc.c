@@ -77,7 +77,9 @@ t_bool  is_range_has_place(const t_meta range, size_t size)
     i = 0;
     while (i < mem_meta_data.size / sizeof(t_meta))
     {
-        if (is_slice(it[i]) && is_slice_in_range(it[i], range))
+        if (it[i].type == FREE && it[i].size >= size)
+            return (TRUE);
+        if (it[i].type == SLICE && is_slice_in_range(it[i], range))
             empty_mem -= it[i].size;
         ++i;
     }
@@ -102,7 +104,22 @@ t_meta  *find_range_by_needed_size(size_t size)
     return (NULL);
 }
 
-void    *find_empty_mem_in_range(const t_meta range)
+void    *truncate_freed_memory(t_meta freed, size_t size)
+{
+    void    *truncated_memory;
+
+    truncated_memory = freed.ptr;
+    freed.size -= size;
+    if (freed.size > 0)
+    {
+        freed.ptr += size;
+        return (truncated_memory);
+    }
+    freed.type = NONE;
+    return (truncated_memory);
+}
+
+void    *find_empty_mem_in_range(const t_meta range, size_t size)
 {
     size_t  i;
     t_meta  *it;
@@ -113,6 +130,8 @@ void    *find_empty_mem_in_range(const t_meta range)
     ptr = range.ptr;
     while (i < mem_meta_data.size / sizeof(t_meta))
     {
+        if (it[i].type == FREE && it[i].size >= size)
+            return (truncate_freed_memory(it[i], size));
         if (is_slice(it[i]) && is_slice_in_range(it[i], range))
             ptr += it[i].size; // pas ouf dans l'idee mais ca marche
         ++i;
@@ -133,7 +152,7 @@ void    *new_memory_slice(size_t size)
     }
     slice = find_first_none_meta_data();
     slice->type = SLICE;
-    slice->ptr = find_empty_mem_in_range(*range);
+    slice->ptr = find_empty_mem_in_range(*range, size);
     slice->size = size;
     return(slice->ptr);
 }
