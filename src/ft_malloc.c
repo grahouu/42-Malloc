@@ -2,7 +2,7 @@
 
 t_meta mem_meta_data = {.type = NONE, .ptr = NULL, .size = 0};
 
-void    *truncate_freed_memory(t_meta freed, size_t size)
+static void    *truncate_freed_memory(t_meta freed, size_t size)
 {
     void    *truncated_memory;
 
@@ -17,7 +17,7 @@ void    *truncate_freed_memory(t_meta freed, size_t size)
     return (truncated_memory);
 }
 
-void  *find_mem_by_needed_size(size_t size)
+static void  *find_mem_by_needed_size(size_t size)
 {
     size_t  i;
     t_meta  *it;
@@ -37,7 +37,7 @@ void  *find_mem_by_needed_size(size_t size)
     return (NULL);
 }
 
-void    *new_memory_slice(size_t size)
+static void    *new_memory_slice(size_t size)
 {
     t_meta *range;
     t_meta *slice;
