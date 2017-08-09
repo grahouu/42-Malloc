@@ -22,13 +22,13 @@ void                print_mem_meta_data_range(t_meta next)
 
     i = 0;
     it = (t_meta*)next.ptr;
-    while(i < next.size / sizeof(t_meta) - 1)
+    while(i < next.size / sizeof(t_meta))
     {
         printf("%-4zu %-5s %-11p %zu\n", i, type_to_str(it[i].type), it[i].ptr, it[i].size);//
         ++i;
     }
-    if (it[i].type == NEXT)
-        print_mem_meta_data_range(it[i]);
+    if (it[i - 1].type == NEXT)
+        print_mem_meta_data_range(it[i - 1]);
 }
 
 void                print_mem_meta_data(void)

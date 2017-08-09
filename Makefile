@@ -5,7 +5,12 @@ INCLUDES = -I./inc/
 
 SRC =	test/main.c					\
 		src/ft_malloc.c				\
+		src/new_range.c				\
 		src/print_mem_meta_data.c	\
+		src/find_first_none_meta_data.c \
+		src/is_slice_in_range.c \
+		src/find_empty_mem_in_range.c \
+		src/is_slice_or_free.c \
 
 OBJ = $(SRC:.c=.o)
 
