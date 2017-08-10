@@ -78,7 +78,9 @@ t_bool  is_slice_or_free(const t_meta slice);
 
 /*
 * brief: this function find the t_meta by ptr.
+* param: <ptr> pointer on memory to find
+* param: <meta_type> type of t_meta to find
 * return: the t_meta if found, NULL otherwise
 */
-t_meta  *find_meta_data_by_ptr(void *ptr);
+t_meta  *find_meta_data_by_ptr(void *ptr, t_type meta_type);
 #endif
