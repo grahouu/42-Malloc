@@ -1,10 +1,8 @@
-NAME = malloc
-VERSION = 1.0.4
-CFLAGS = -Wall -Werror -Wextra -g
+NAME = libftmalloc.a
+CFLAGS = -Wall -Werror -Wextra
 INCLUDES = -I./inc/
 
-SRC =	test/main.c					\
-		src/ft_malloc.c				\
+SRC =	src/ft_malloc.c				\
 		src/new_range.c				\
 		src/print_mem_meta_data.c	\
 		src/find_first_none_meta_data.c \
@@ -14,10 +12,12 @@ SRC =	test/main.c					\
 
 OBJ = $(SRC:.c=.o)
 
+TEST1=main.c
+
 all: $(NAME) finish
 
 $(NAME): $(OBJ)
-	@gcc $(CFLAGS) $(INCLUDES) -o $(NAME) $(OBJ) $(LIBS) -lpthread
+	@ar -rc $(NAME) $(OBJ) 
 	@echo This Job is Done sir !
 
 %.o: %.c 
@@ -31,10 +31,14 @@ fclean: clean
 
 re: fclean all
 
-v:
-	@(echo "version: $(VERSION)")
-
 finish:
 	@(echo "[\033[32m$(NAME)\033[00m]")
 
-.PHONY: all build clean fclean re v
+cmain:
+	@make -C test/ 1="../$(NAME)" 2="$(TEST1)"
+	./test/libftmalloc_test
+	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST1)"
+
+test: all cmain fclean
+
+.PHONY: all build clean fclean re test
