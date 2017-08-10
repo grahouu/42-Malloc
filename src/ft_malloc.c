@@ -2,7 +2,7 @@
 
 t_meta mem_meta_data = {.type = NONE, .ptr = NULL, .size = 0};
 
-static void    *truncate_freed_memory(t_meta freed, size_t size)
+static void    *truncate_freed_memory(t_meta freed, const size_t size)
 {
     void    *truncated_memory;
 
@@ -17,7 +17,7 @@ static void    *truncate_freed_memory(t_meta freed, size_t size)
     return (truncated_memory);
 }
 
-static void  *find_mem_by_needed_size(size_t size)
+static void  *find_mem_by_needed_size(const size_t size)
 {
     size_t  i;
     t_meta  *it;
@@ -37,7 +37,7 @@ static void  *find_mem_by_needed_size(size_t size)
     return (NULL);
 }
 
-static void    *new_memory_slice(size_t size)
+static void    *new_memory_slice(const size_t size)
 {
     t_meta *range;
     t_meta *slice;
@@ -55,7 +55,7 @@ static void    *new_memory_slice(size_t size)
     return(slice->ptr);
 }
 
-void    *ft_malloc(size_t size)
+void    *ft_malloc(const size_t size)
 {
     if (mem_meta_data.type == NONE)
         mem_meta_data = new_meta_range();
