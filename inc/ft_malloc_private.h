@@ -75,4 +75,10 @@ void    *find_empty_mem_in_range(const t_meta range, size_t size);
 * return: TRUE if slice.type == SLICE or slice.type == FREE, FALSE otherwise
 */
 t_bool  is_slice_or_free(const t_meta slice);
+
+/*
+* brief: this function find the t_meta by ptr.
+* return: the t_meta if found, NULL otherwise
+*/
+t_meta  *find_meta_data_by_ptr(void *ptr);
 #endif
