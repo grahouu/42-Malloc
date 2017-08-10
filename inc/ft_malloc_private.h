@@ -83,4 +83,12 @@ t_bool  is_slice_or_free(const t_meta slice);
 * return: the t_meta if found, NULL otherwise
 */
 t_meta  *find_meta_data_by_ptr(void *ptr, t_type meta_type);
+
+/*
+* brief: this function truncate a freed memory.
+* param: <freed> t_meta to truncate
+* param: <size> size to truncate
+* return: the memory truncated
+*/
+void    *truncate_freed_memory(t_meta *freed, const size_t size);
 #endif

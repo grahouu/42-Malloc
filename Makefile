@@ -11,6 +11,7 @@ SRC =	src/ft_malloc.c				\
 		src/find_empty_mem_in_range.c \
 		src/is_slice_or_free.c \
 		src/find_meta_data_by_ptr.c \
+		src/truncate_freed_memory.c \
 
 OBJ = $(SRC:.c=.o)
 
