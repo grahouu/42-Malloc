@@ -4,13 +4,16 @@ INCLUDES = -I./inc/
 
 SRC =	src/ft_malloc.c				\
 		src/ft_free.c				\
+		src/ft_realloc.c			\
 		src/new_range.c				\
+		src/new_slice.c				\
 		src/print_mem_meta_data.c	\
 		src/find_first_none_meta_data.c \
 		src/is_slice_in_range.c \
 		src/find_empty_mem_in_range.c \
 		src/is_slice_or_free.c \
 		src/find_meta_data_by_ptr.c \
+		src/truncate_freed_memory.c \
 
 OBJ = $(SRC:.c=.o)
 
@@ -41,6 +44,6 @@ cmain:
 	./test/libftmalloc_test
 	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST1)"
 
-test: all cmain fclean
+test: re cmain fclean
 
 .PHONY: all build clean fclean re test
