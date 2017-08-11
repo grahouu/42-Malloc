@@ -14,12 +14,9 @@ SRC =	src/ft_malloc.c				\
 		src/find_empty_mem_in_range.c \
 		src/is_slice_or_free.c \
 		src/find_meta_data_by_ptr.c \
-<<<<<<< HEAD
 		src/find_range_by_meta.c \
 		src/check_if_empty_range.c \
-=======
 		src/truncate_freed_memory.c \
->>>>>>> master
 
 OBJ = $(SRC:.c=.o)
 
