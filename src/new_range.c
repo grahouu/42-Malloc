@@ -26,3 +26,9 @@ t_meta  new_meta_range(void)
     new.type = NEXT;
     return (new);
 }
+
+void    del_memory_range(t_meta *range)
+{
+    munmap(range->ptr, range->size);
+    range->type = NONE;
+}

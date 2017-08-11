@@ -46,6 +46,14 @@ t_meta  new_memory_range(size_t size);
 t_meta  new_meta_range(void);
 
 /*
+* brief: this function allocate a memory slice which is equal
+*   than size and store the slice in meta datas
+* param: <size> size to be allocated
+* return: the pointer on memory slice
+*/
+t_meta    *new_slice(const size_t size);
+
+/*
 * brief: this function find the first t_meta with the type NONE in metadatas.
 *   If the meta_range is full, a new meta range is created
 * return: the t_meta found
@@ -70,7 +78,6 @@ t_bool  is_slice_in_range(const t_meta slice, const t_meta range);
 */
 void    *find_empty_mem_in_range(const t_meta range, size_t size);
 
-
 /*
 * brief: this function check if the t_meta type is SLICE or FREE
 * param: <slice> the t_meta to check
@@ -82,6 +89,7 @@ t_bool  is_slice_or_free(const t_meta slice);
 * brief: this function find the t_meta by ptr.
 * param: <ptr> pointer on memory to find
 * param: <meta_type> type of t_meta to find
+<<<<<<< HEAD
 * return: the t_meta if found, NULL otherwise
 */
 t_meta  *find_meta_data_by_ptr(void *ptr, t_type meta_type);
@@ -99,4 +107,23 @@ t_meta  *find_range_by_meta(t_meta meta);
 * return: 1 if empty, 0 otherwise
 */
 size_t  check_if_empty_range(t_meta range);
+=======
+* return: the t_meta if found, NULL otherwise
+*/
+t_meta  *find_meta_data_by_ptr(void *ptr, t_type meta_type);
+
+/*
+* brief: this function truncate a freed memory.
+* param: <freed> t_meta to truncate
+* param: <size> size to truncate
+* return: the memory truncated
+*/
+void    *truncate_freed_memory(t_meta *freed, const size_t size);
+
+/*
+* brief: this function munmap a memory range and set t_meta type to NONE
+* param: <range> the range to munmap
+*/
+void    del_memory_range(t_meta *range);
+>>>>>>> master
 #endif
