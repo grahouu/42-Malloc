@@ -91,4 +91,10 @@ t_meta  *find_meta_data_by_ptr(void *ptr, t_type meta_type);
 * return: the memory truncated
 */
 void    *truncate_freed_memory(t_meta *freed, const size_t size);
+
+/*
+* brief: this function munmap a memory range and set t_meta type to NONE
+* param: <range> the range to munmap
+*/
+void    del_memory_range(t_meta *range);
 #endif

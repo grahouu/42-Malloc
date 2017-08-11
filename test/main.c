@@ -1,4 +1,5 @@
 #include "ft_malloc.h"
+#include <unistd.h>
 
 int					main(void)
 {
@@ -9,5 +10,6 @@ int					main(void)
 		ft_malloc(50);
 	ft_free(m1);
 	print_mem_meta_data();
+	write(1, "1.0\n", 4);
 	return (0);
 }
