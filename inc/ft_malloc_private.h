@@ -44,6 +44,14 @@ t_meta  new_memory_range(size_t size);
 t_meta  new_meta_range(void);
 
 /*
+* brief: this function allocate a memory slice which is equal
+*   than size and store the slice in meta datas
+* param: <size> size to be allocated
+* return: the pointer on memory slice
+*/
+t_meta    *new_slice(const size_t size);
+
+/*
 * brief: this function find the first t_meta with the type NONE in metadatas.
 *   If the meta_range is full, a new meta range is created
 * return: the t_meta found
@@ -67,7 +75,6 @@ t_bool  is_slice_in_range(const t_meta slice, const t_meta range);
 * return: the pointer on memory, or NULL if the range as not enough space 
 */
 void    *find_empty_mem_in_range(const t_meta range, size_t size);
-
 
 /*
 * brief: this function check if the t_meta type is SLICE or FREE

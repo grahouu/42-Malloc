@@ -4,7 +4,9 @@ INCLUDES = -I./inc/
 
 SRC =	src/ft_malloc.c				\
 		src/ft_free.c				\
+		src/ft_realloc.c			\
 		src/new_range.c				\
+		src/new_slice.c				\
 		src/print_mem_meta_data.c	\
 		src/find_first_none_meta_data.c \
 		src/is_slice_in_range.c \
