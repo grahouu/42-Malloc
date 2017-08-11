@@ -14,9 +14,9 @@ size_t  check_if_empty_range(t_meta range)
         {
             end_ptr = (size_t)(range.ptr + range.size);
             if (it[i].ptr >= range.ptr && (size_t)it[i].ptr <= end_ptr)
-                return (1);
+                return (0);
         }
         ++i;
     }
-    return (0);
+    return (1);
 }
