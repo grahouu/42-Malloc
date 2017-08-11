@@ -41,6 +41,6 @@ cmain:
 	./test/libftmalloc_test
 	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST1)"
 
-test: all cmain fclean
+test: re cmain fclean
 
 .PHONY: all build clean fclean re test
