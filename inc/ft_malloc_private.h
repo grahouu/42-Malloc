@@ -131,6 +131,6 @@ void    set_range_slices_to_none(t_meta range);
 * brief: this function free slice
 * param: <slice> slice for free
 */
-void    free_slice(t_meta *slice)
+void    free_slice(t_meta *slice);
 
 #endif
