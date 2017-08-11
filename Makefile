@@ -7,6 +7,7 @@ SRC =	src/ft_malloc.c				\
 		src/ft_realloc.c			\
 		src/new_range.c				\
 		src/new_slice.c				\
+		src/free_slice.c				\
 		src/print_mem_meta_data.c	\
 		src/printer.c	\
 		src/find_first_none_meta_data.c \

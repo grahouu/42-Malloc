@@ -122,12 +122,6 @@ void    *truncate_freed_memory(t_meta *freed, const size_t size);
 void    del_memory_range(t_meta *range);
 
 /*
-* brief: set t_meta type to NONE for all range
-* param: <meta_type> type of range
-*/
-void    set_range_slices_to_none(t_meta range);
-
-/*
 * brief: this function free slice
 * param: <slice> slice for free
 */
