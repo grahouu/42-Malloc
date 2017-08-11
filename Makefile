@@ -6,11 +6,14 @@ SRC =	src/ft_malloc.c				\
 		src/ft_free.c				\
 		src/new_range.c				\
 		src/print_mem_meta_data.c	\
+		src/printer.c	\
 		src/find_first_none_meta_data.c \
 		src/is_slice_in_range.c \
 		src/find_empty_mem_in_range.c \
 		src/is_slice_or_free.c \
 		src/find_meta_data_by_ptr.c \
+		src/find_range_by_meta.c \
+		src/check_if_empty_range.c \
 
 OBJ = $(SRC:.c=.o)
 

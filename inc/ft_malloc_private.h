@@ -29,6 +29,8 @@ typedef struct s_meta
 
 extern t_meta mem_meta_data;
 
+void    print_meta(t_meta meta);
+
 /*
 * brief: this function allocate a memory range which is biger or equal
 *   than size
@@ -83,4 +85,18 @@ t_bool  is_slice_or_free(const t_meta slice);
 * return: the t_meta if found, NULL otherwise
 */
 t_meta  *find_meta_data_by_ptr(void *ptr, t_type meta_type);
+
+/*
+* brief: this function find the range by meta.
+* param: <meta_type> type of t_meta
+* return: the t_meta if found, NULL otherwise
+*/
+t_meta  *find_range_by_meta(t_meta meta);
+
+/*
+* brief: this function check if empty range.
+* param: <meta_type> type of t_meta RANGE
+* return: 1 if empty, 0 otherwise
+*/
+size_t  check_if_empty_range(t_meta range);
 #endif
