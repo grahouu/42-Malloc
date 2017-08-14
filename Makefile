@@ -22,6 +22,7 @@ SRC =	src/ft_malloc.c				\
 OBJ = $(SRC:.c=.o)
 
 TEST1=main.c
+TEST_FREE=free.c
 
 all: $(NAME) finish
 
@@ -47,6 +48,9 @@ cmain:
 	@make -C test/ 1="../$(NAME)" 2="$(TEST1)"
 	./test/libftmalloc_test
 	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST1)"
+	@make -C test/ 1="../$(NAME)" 2="$(TEST_FREE)"
+	./test/libftmalloc_test
+	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST_FREE)"
 
 test: re cmain fclean
 

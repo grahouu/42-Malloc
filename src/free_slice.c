@@ -11,7 +11,7 @@ static void set_range_slices_to_none(t_meta range)
     end_ptr = (size_t)(range.ptr + range.size);
     while (i < mem_meta_data.size / sizeof(t_meta))
     {
-        if (it[i].ptr >= range.ptr && (size_t)it[i].ptr <= end_ptr)
+        if (it[i].ptr >= range.ptr && (size_t)it[i].ptr < end_ptr)
             it[i].type = NONE;
         ++i;
     }
@@ -24,6 +24,8 @@ void    free_slice(t_meta *slice)
 
     slice->type = FREE;
     range = find_range_by_meta(*slice);
+    printf("%-5s %-11p %zu\n", "START RANGE", range->ptr, range->size);
+    printf("%-5s %-11p\n", "END RANGE", range->ptr + range->size);
     if (range)
     {
         if_empty = check_if_empty_range(*range);

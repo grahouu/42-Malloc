@@ -9,7 +9,7 @@ int					main(void)
 	for (int i = 0; i < 200; ++i)
 		ft_malloc(50);
 	ft_free(m1);
-	print_mem_meta_data();
+	print_mem_meta_data(10);
 	write(1, "1.0\n", 4);
 	return (0);
 }
