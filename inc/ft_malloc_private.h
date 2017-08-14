@@ -5,6 +5,12 @@
 #include <unistd.h>
 # include <stddef.h>
 #include <stdio.h> //norme
+
+# define TINY_NB_PAGES = 10;
+# define SMALL_NB_PAGES = 100;
+# define TINY_SIZE = TINY_NB_PAGES * getpagesize() / 100;
+# define SMALL_SIZE = SMALL_NB_PAGES * getpagesize() / 100;
+
 typedef enum e_type
 {
     NONE,
