@@ -12,7 +12,7 @@ static void  *find_mem_by_needed_size(const size_t size)
     {
         if (it[i].type == FREE && it[i].size >= size)
             return (truncate_freed_memory(&(it[i]), size));
-        if (it[i].type == RANGE && it[i].size > size 
+        if (is_range(it[i]) && it[i].size > size 
             && (ptr = find_empty_mem_in_range(it[i], size)))
             return (ptr);
         ++i;
