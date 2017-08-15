@@ -117,11 +117,11 @@ t_meta  *find_meta_data_by_ptr(void *ptr, t_type meta_type);
 t_meta  *find_range_by_meta(t_meta meta);
 
 /*
-* brief: this function check if empty range.
+* brief: this function check if range is empty.
 * param: <meta_type> type of t_meta RANGE
-* return: 1 if empty, 0 otherwise
+* return: TRUE if empty, FALSE otherwise
 */
-size_t  check_if_empty_range(t_meta range);
+t_bool  is_range_empty(t_meta range);
 
 /*
 * brief: this function truncate a freed memory.

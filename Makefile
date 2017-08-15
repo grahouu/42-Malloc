@@ -18,7 +18,7 @@ SRC =	src/ft_malloc.c				\
 		src/is_slice_or_free.c \
 		src/find_meta_data_by_ptr.c \
 		src/find_range_by_meta.c \
-		src/check_if_empty_range.c \
+		src/is_range_empty.c \
 		src/truncate_freed_memory.c \
 
 OBJ = $(SRC:.c=.o)

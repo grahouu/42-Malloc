@@ -20,7 +20,6 @@ static void set_range_slices_to_none(t_meta range)
 void    free_slice(t_meta *slice)
 {
     t_meta      *range;
-    size_t      if_empty;
 
     slice->type = FREE;
     range = find_range_by_meta(*slice);
@@ -28,8 +27,7 @@ void    free_slice(t_meta *slice)
     printf("%-5s %-11p\n", "END RANGE", range->ptr + range->size);
     if (range)
     {
-        if_empty = check_if_empty_range(*range);
-        if (if_empty)
+        if (is_range_empty(*range))
         {
             set_range_slices_to_none(*range);
             del_memory_range(range);
