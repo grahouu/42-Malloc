@@ -40,7 +40,7 @@ t_meta  *find_first_none_meta_data(void)
     none_meta = find_first_none_meta_data_in_meta_range(mem_meta_data);
     if (none_meta)
         return (none_meta);
-    tmp = new_memory_range(mem_meta_data.size + 1);
+    tmp = new_meta_range();
     none_meta = copy_meta_data(mem_meta_data, tmp);
     del_memory_range(&mem_meta_data);
     mem_meta_data = tmp;

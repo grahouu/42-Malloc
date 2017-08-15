@@ -5,11 +5,19 @@
 #include <unistd.h>
 # include <stddef.h>
 #include <stdio.h> //norme
+
+# define TINY_NB_PAGES  10
+# define SMALL_NB_PAGES  100
+# define TINY_SIZE  (size_t)(TINY_NB_PAGES * getpagesize() / 100)
+# define SMALL_SIZE  (size_t)(SMALL_NB_PAGES * getpagesize() / 100)
+
 typedef enum e_type
 {
     NONE,
     SLICE,
-    RANGE,
+    TRANGE,
+    SRANGE,
+    LRANGE,
     NEXT,
     FREE
 }       t_type;
@@ -82,6 +90,14 @@ void    *find_empty_mem_in_range(const t_meta range, size_t size);
 * return: TRUE if slice.type == SLICE or slice.type == FREE, FALSE otherwise
 */
 t_bool  is_slice_or_free(const t_meta slice);
+
+/*
+* brief: this function check if the t_meta type is RANGE
+* param: <range> the t_meta to check
+* return: TRUE if range.type == TRANGE or range.type == SRANGE or
+*   range.type == LRANGE, FALSE otherwise
+*/
+t_bool is_range(const t_meta range);
 
 /*
 * brief: this function find the t_meta by ptr.
