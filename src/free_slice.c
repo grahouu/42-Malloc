@@ -23,8 +23,6 @@ void    free_slice(t_meta *slice)
 
     slice->type = FREE;
     range = find_range_by_meta(*slice);
-    printf("%-5s %-11p %zu\n", "START RANGE", range->ptr, range->size);
-    printf("%-5s %-11p\n", "END RANGE", range->ptr + range->size);
     if (range)
     {
         if (is_range_empty(*range))
