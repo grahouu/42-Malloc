@@ -3,6 +3,7 @@
 
 int					main(void)
 {
+	ft_malloc(5302);
 	void	*m1 = ft_malloc(700);
 	void	*m2 = ft_malloc(367);
 	ft_malloc(53);
