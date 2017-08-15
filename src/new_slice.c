@@ -19,7 +19,10 @@ static void  *find_mem_by_needed_size(const size_t size)
     i = 0;
     while (i < mem_meta_data.size / sizeof(t_meta))
     {
-        if (it[i].type == FREE && it[i].size >= size) // TODO: verifier si free est dans une range de bon type
+        if (it[i].type == FREE 
+            && it[i].size >= size
+            && is_valid_storage(*find_range_by_meta(it[i]), size)
+            )
             return (truncate_freed_memory(&(it[i]), size));
         if (is_range(it[i]) && it[i].size > size
             && is_valid_storage(it[i], size)
