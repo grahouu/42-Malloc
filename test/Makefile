@@ -8,11 +8,10 @@ SRC = $2
 
 OBJ = $(SRC:.c=.o)
 
-all: $(NAME) finish
+all: $(NAME)
 
 $(NAME): $(OBJ)
-	@gcc $(CFLAGS) $(INCLUDES) -o $(NAME) $(OBJ) $(LIB) 
-	@echo This Job is Done sir !
+	@gcc $(CFLAGS) $(INCLUDES) -o $(NAME) $(OBJ) $(LIB)
 
 %.o: %.c 
 	@gcc $(CFLAGS) $(INCLUDES) -o $@ -c $<
@@ -24,8 +23,5 @@ fclean: clean
 	@(rm -rf $(NAME))
 
 re: fclean all
-
-finish:
-	@(echo "[\033[32m$(NAME)\033[00m]")
 
 .PHONY: all build clean fclean re
