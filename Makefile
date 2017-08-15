@@ -13,6 +13,7 @@ SRC =	src/ft_malloc.c				\
 		src/find_first_none_meta_data.c \
 		src/is_slice_in_range.c \
 		src/is_range.c \
+		src/type_to_str.c \
 		src/find_empty_mem_in_range.c \
 		src/is_slice_or_free.c \
 		src/find_meta_data_by_ptr.c \

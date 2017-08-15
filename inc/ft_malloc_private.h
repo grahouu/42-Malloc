@@ -143,4 +143,11 @@ void    del_memory_range(t_meta *range);
 */
 void    free_slice(t_meta *slice);
 
+/*
+* brief: this function return a string
+* which correspond to the type
+* param: <t> type of t_meta
+* return: string serialized type
+*/
+const char    *type_to_str(t_type t);
 #endif

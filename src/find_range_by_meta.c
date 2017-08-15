@@ -10,7 +10,7 @@ t_meta      *find_range_by_meta(const t_meta meta)
     i = 0;
     while (i < mem_meta_data.size / sizeof(t_meta))
     {
-        if (it[i].type == RANGE)
+        if (is_range(it[i]))
         {
             end_ptr = (size_t)(it[i].ptr + it[i].size);
             if (meta.ptr >= it[i].ptr && (size_t)meta.ptr <= end_ptr)
