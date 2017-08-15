@@ -2,6 +2,9 @@
 
 void    ft_free(void *ptr)
 {
-    t_meta  *slice = find_meta_data_by_ptr(ptr, SLICE);
-    slice->type = FREE;
+    t_meta      *slice;
+
+    slice = find_meta_data_by_ptr(ptr, SLICE);
+    if (slice)
+        free_slice(slice);
 }

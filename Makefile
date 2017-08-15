@@ -7,18 +7,23 @@ SRC =	src/ft_malloc.c				\
 		src/ft_realloc.c			\
 		src/new_range.c				\
 		src/new_slice.c				\
+		src/free_slice.c				\
 		src/print_mem_meta_data.c	\
+		src/printer.c	\
 		src/find_first_none_meta_data.c \
 		src/is_slice_in_range.c \
 		src/is_range.c \
 		src/find_empty_mem_in_range.c \
 		src/is_slice_or_free.c \
 		src/find_meta_data_by_ptr.c \
+		src/find_range_by_meta.c \
+		src/check_if_empty_range.c \
 		src/truncate_freed_memory.c \
 
 OBJ = $(SRC:.c=.o)
 
 TEST1=main.c
+TEST_FREE=free.c
 
 all: $(NAME) finish
 
@@ -44,6 +49,9 @@ cmain:
 	@make -C test/ 1="../$(NAME)" 2="$(TEST1)"
 	./test/libftmalloc_test
 	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST1)"
+	@make -C test/ 1="../$(NAME)" 2="$(TEST_FREE)"
+	./test/libftmalloc_test
+	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST_FREE)"
 
 test: re cmain fclean
 

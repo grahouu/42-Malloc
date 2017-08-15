@@ -36,9 +36,7 @@ void    *ft_realloc(void *ptr, size_t const size)
         slice->size = size;
         return (ptr);
     }
-    // call a free slice -->
-    slice->type = FREE;
-    // <--
+    free_slice(slice);
     slice = new_slice(size);
     slice->ptr = ft_memcpy(ptr, slice->ptr, size - needed_size);
     return (slice->ptr);

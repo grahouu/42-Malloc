@@ -14,7 +14,6 @@ int					main(void)
 	ft_malloc(255);
 	ft_free(m2);
 	ft_malloc(255);
-	print_mem_meta_data();
-	write(1, "1.0\n", 4);
+	print_mem_meta_data(10);
 	return (0);
 }
