@@ -14,7 +14,7 @@ static unsigned long		ft_d_size(unsigned long n, unsigned long base)
 	return (d_size);
 }
 
-void	ft_putstr_padded(char const *s, size_t padding)
+static void	ft_putstr_padded(char const *s, size_t padding)
 {
 	size_t	n;
 
@@ -26,7 +26,7 @@ void	ft_putstr_padded(char const *s, size_t padding)
     
 }
 
-void ft_putnbr_padded(unsigned long n, unsigned long padding, unsigned long base)
+static void ft_putnbr_padded(unsigned long n, unsigned long padding, unsigned long base)
 {
 	char		str[20];
 	const char		*bstr = "0123456789abcdef";
@@ -46,7 +46,7 @@ void ft_putnbr_padded(unsigned long n, unsigned long padding, unsigned long base
     ft_putstr_padded(str, padding);
 }
 
-void                print_one_meta_data(t_meta md)
+static void                print_one_meta_data(t_meta md)
 {
     ft_putstr_padded(type_to_str(md.type), 6);
     if (md.ptr)
