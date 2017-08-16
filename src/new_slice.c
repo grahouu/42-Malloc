@@ -35,18 +35,23 @@ static void  *find_mem_by_needed_size(const size_t size)
 
 t_meta    *new_slice(const size_t size)
 {
-    t_meta *range;
+    void *ptr;
     t_meta *slice;
+    t_meta *range;
+    //size_t i;
 
-    slice = find_first_none_meta_data();
-    slice->ptr = find_mem_by_needed_size(size);
-    slice->type = SLICE;
-    slice->size = size;
-    if (!slice->ptr)
+    ptr = find_mem_by_needed_size(size);
+    if (!ptr)
     {
+        //i = ((void *)slice - mem_meta_data.ptr) / sizeof(t_meta);
         range = find_first_none_meta_data();
         *range = new_memory_range(size);
-        slice->ptr = range->ptr;
+        ptr = range->ptr;
+        //((t_meta*)mem_meta_data.ptr)[i].ptr = range->ptr;
     }
+    slice = find_first_none_meta_data();
+    slice->type = SLICE;
+    slice->size = size;
+    slice->ptr = ptr;
     return(slice);
 }

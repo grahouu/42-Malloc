@@ -10,12 +10,12 @@ int					main(void)
 {
 	char *s;
 
-	for (int i = 0; i < 100; ++i)
+	for (int i = 0; i < 300; ++i)
 	{
 		s = ft_malloc(SMALL_SIZE + 10);
 		if (!s)
 		{
-			printf("[\x1b[31m TERR \x1b[0m] %s\n", "Fill large ranges");
+			printf("[\x1b[33m TERR \x1b[0m] %s\n", "Fill large ranges");
 			return (1);
 		}
         memset((void *)s, 'a', SMALL_SIZE + 10);

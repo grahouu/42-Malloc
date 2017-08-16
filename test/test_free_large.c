@@ -9,7 +9,7 @@ int					main(void)
 {
 	char *prt_malloc;
     t_meta *md;
-	size_t count = 50;
+	size_t count = 200;
     size_t count_ranges = 0;
     size_t count_none = 0;
 
