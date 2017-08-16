@@ -51,6 +51,6 @@ t_meta  new_meta_range(void)
 
 void    del_memory_range(t_meta *range)
 {
-    munmap(range->ptr, range->size);
-    range->type = NONE;
+        munmap(range->ptr, range->size);
+        range->type = NONE;
 }

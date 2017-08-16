@@ -20,6 +20,7 @@ SRC =	src/ft_malloc.c				\
 		src/find_range_by_meta.c \
 		src/is_range_empty.c \
 		src/truncate_freed_memory.c \
+		src/count_type.c \
 
 OBJ = $(SRC:.c=.o)
 
@@ -36,7 +37,10 @@ TEST9=test_realloc_3.c
 TEST10=test_realloc_4.c
 TEST11=test_realloc_5.c
 TEST12=test_realloc_6.c
-TEST_FREE=free.c
+TEST_FREE_TINY=test_free_tiny.c
+TEST_FREE_SMALL=test_free_small.c
+TEST_FREE_LARGE=test_free_large.c
+TEST_FREE_ALL=test_free_all.c
 
 all: $(NAME) finish
 
@@ -58,7 +62,8 @@ re: fclean all
 finish:
 	@(echo "[\033[32m$(NAME)\033[00m]")
 
-cmain:
+cmain_malloc:
+	# TEST MALLOC
 	@make -C test/ 1="../$(NAME)" 2="$(TEST0)"
 	@./test/libftmalloc_test
 	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST0)"
@@ -80,6 +85,24 @@ cmain:
 	@make -C test/ 1="../$(NAME)" 2="$(TEST6)"
 	@./test/libftmalloc_test
 	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST6)"
+
+cmain_free:
+	# TEST FREE
+	@make -C test/ 1="../$(NAME)" 2="$(TEST_FREE_TINY)"
+	@./test/libftmalloc_test
+	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST_FREE_TINY)"
+	@make -C test/ 1="../$(NAME)" 2="$(TEST_FREE_SMALL)"
+	@./test/libftmalloc_test
+	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST_FREE_SMALL)"
+	@make -C test/ 1="../$(NAME)" 2="$(TEST_FREE_LARGE)"
+	@./test/libftmalloc_test
+	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST_FREE_LARGE)"
+	@make -C test/ 1="../$(NAME)" 2="$(TEST_FREE_ALL)"
+	@./test/libftmalloc_test
+	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST_FREE_ALL)"
+
+cmain_realloc:
+	# TEST REALLOC
 	@make -C test/ 1="../$(NAME)" 2="$(TEST7)"
 	@./test/libftmalloc_test
 	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST7)"
@@ -98,10 +121,13 @@ cmain:
 	@make -C test/ 1="../$(NAME)" 2="$(TEST12)"
 	@./test/libftmalloc_test
 	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST12)"
-	# @make -C test/ 1="../$(NAME)" 2="$(TEST_FREE)"
-	# ./test/libftmalloc_test
-	# @make -C test/ fclean 1="../$(NAME)" 2="$(TEST_FREE)"
 
-test: re cmain fclean
+test: re cmain_malloc cmain_free cmain_realloc fclean
+
+test_malloc: re cmain_malloc fclean
+
+test_free: re cmain_free fclean
+
+test_realloc: re cmain_realloc fclean
 
 .PHONY: all build clean fclean re test
