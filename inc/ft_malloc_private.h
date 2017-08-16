@@ -158,4 +158,6 @@ const char    *type_to_str(t_type t);
 * return: size_t
 */
 size_t    count_type(t_type t);
+
+void    merge_freed(void);
 #endif

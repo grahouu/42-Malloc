@@ -7,4 +7,5 @@ void    ft_free(void *ptr)
     slice = find_meta_data_by_ptr(ptr, SLICE);
     if (slice)
         free_slice(slice);
+    merge_freed();
 }

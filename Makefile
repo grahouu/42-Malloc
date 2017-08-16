@@ -5,6 +5,7 @@ INCLUDES = -I./inc/
 
 SRC =	src/ft_malloc.c				\
 		src/ft_free.c				\
+		src/merge_freed.c				\
 		src/ft_realloc.c			\
 		src/new_range.c				\
 		src/new_slice.c				\
