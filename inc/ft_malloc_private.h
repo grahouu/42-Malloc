@@ -150,4 +150,12 @@ void    free_slice(t_meta *slice);
 * return: string serialized type
 */
 const char    *type_to_str(t_type t);
+
+/*
+* brief: this function return number
+* which correspond to the type
+* param: <t> type of t_meta
+* return: size_t
+*/
+size_t    count_type(t_type t);
 #endif
