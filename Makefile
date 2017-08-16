@@ -13,16 +13,29 @@ SRC =	src/ft_malloc.c				\
 		src/find_first_none_meta_data.c \
 		src/is_slice_in_range.c \
 		src/is_range.c \
+		src/type_to_str.c \
 		src/find_empty_mem_in_range.c \
 		src/is_slice_or_free.c \
 		src/find_meta_data_by_ptr.c \
 		src/find_range_by_meta.c \
-		src/check_if_empty_range.c \
+		src/is_range_empty.c \
 		src/truncate_freed_memory.c \
 
 OBJ = $(SRC:.c=.o)
 
-TEST1=main.c
+TEST0=test_malloc_0.c
+TEST1=test_malloc_1.c
+TEST2=test_malloc_2.c
+TEST3=test_malloc_3.c
+TEST4=test_malloc_4.c
+TEST5=test_malloc_5.c
+TEST6=test_malloc_6.c
+TEST7=test_realloc_1.c
+TEST8=test_realloc_2.c
+TEST9=test_realloc_3.c
+TEST10=test_realloc_4.c
+TEST11=test_realloc_5.c
+TEST12=test_realloc_6.c
 TEST_FREE=free.c
 
 all: $(NAME) finish
@@ -46,12 +59,48 @@ finish:
 	@(echo "[\033[32m$(NAME)\033[00m]")
 
 cmain:
+	@make -C test/ 1="../$(NAME)" 2="$(TEST0)"
+	@./test/libftmalloc_test
+	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST0)"
 	@make -C test/ 1="../$(NAME)" 2="$(TEST1)"
-	./test/libftmalloc_test
+	@./test/libftmalloc_test
 	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST1)"
-	@make -C test/ 1="../$(NAME)" 2="$(TEST_FREE)"
-	./test/libftmalloc_test
-	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST_FREE)"
+	@make -C test/ 1="../$(NAME)" 2="$(TEST2)"
+	@./test/libftmalloc_test
+	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST2)"
+	@make -C test/ 1="../$(NAME)" 2="$(TEST3)"
+	@./test/libftmalloc_test
+	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST3)"
+	@make -C test/ 1="../$(NAME)" 2="$(TEST4)"
+	@./test/libftmalloc_test
+	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST4)"
+	@make -C test/ 1="../$(NAME)" 2="$(TEST5)"
+	@./test/libftmalloc_test
+	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST5)"
+	@make -C test/ 1="../$(NAME)" 2="$(TEST6)"
+	@./test/libftmalloc_test
+	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST6)"
+	@make -C test/ 1="../$(NAME)" 2="$(TEST7)"
+	@./test/libftmalloc_test
+	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST7)"
+	@make -C test/ 1="../$(NAME)" 2="$(TEST8)"
+	@./test/libftmalloc_test
+	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST8)"
+	@make -C test/ 1="../$(NAME)" 2="$(TEST9)"
+	@./test/libftmalloc_test
+	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST9)"
+	@make -C test/ 1="../$(NAME)" 2="$(TEST10)"
+	@./test/libftmalloc_test
+	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST10)"
+	@make -C test/ 1="../$(NAME)" 2="$(TEST11)"
+	@./test/libftmalloc_test
+	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST11)"
+	@make -C test/ 1="../$(NAME)" 2="$(TEST12)"
+	@./test/libftmalloc_test
+	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST12)"
+	# @make -C test/ 1="../$(NAME)" 2="$(TEST_FREE)"
+	# ./test/libftmalloc_test
+	# @make -C test/ fclean 1="../$(NAME)" 2="$(TEST_FREE)"
 
 test: re cmain fclean
 
