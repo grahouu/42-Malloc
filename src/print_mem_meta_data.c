@@ -49,8 +49,13 @@ void ft_putnbr_padded(unsigned long n, unsigned long padding, unsigned long base
 void                print_one_meta_data(t_meta md)
 {
     ft_putstr_padded(type_to_str(md.type), 6);
-    write(1, "0x", 2);
-    ft_putnbr_padded((unsigned long)md.ptr, 10, 16);
+    if (md.ptr)
+    {
+        write(1, "0x", 2);
+        ft_putnbr_padded((unsigned long)md.ptr, 10, 16);
+    }
+    else
+        ft_putstr_padded("NULL", 12);
     ft_putnbr_padded((unsigned long)md.size, 0, 10);
     write(1, "\n", 1);
 }
