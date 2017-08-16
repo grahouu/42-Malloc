@@ -1,5 +1,6 @@
 NAME = libftmalloc.a
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -Wconversion
+#TESTFLAGS = -ggdb -fsanitize=address -fno-omit-frame-pointer
 INCLUDES = -I./inc/
 
 SRC =	src/ft_malloc.c				\
@@ -49,7 +50,7 @@ $(NAME): $(OBJ)
 	@echo This Job is Done sir !
 
 %.o: %.c 
-	@gcc $(CFLAGS) $(INCLUDES) -o $@ -c $<
+	@gcc $(CFLAGS) $(TESTFLAGS) $(INCLUDES) -o $@ -c $<
 
 clean:
 	@(rm -rf $(OBJ))

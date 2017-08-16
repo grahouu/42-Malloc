@@ -15,17 +15,17 @@ t_meta  new_memory_range(size_t size)
     t_meta          new;
     t_type          type;
     size_t          memory_size;
-    const size_t    page_size = getpagesize();
+    const size_t    page_size = (size_t)getpagesize();
 
     type = LRANGE;
     if (size <= TINY_SIZE)
     {
-        memory_size = TINY_NB_PAGES * getpagesize();
+        memory_size = TINY_NB_PAGES * (size_t)getpagesize();
         type = TRANGE;
     }
     else if (size <= SMALL_SIZE)
     {
-        memory_size = SMALL_NB_PAGES * getpagesize();
+        memory_size = SMALL_NB_PAGES * (size_t)getpagesize();
         type = SRANGE;
     }
     else if (size % page_size)
@@ -42,9 +42,9 @@ t_meta  new_meta_range(void)
     t_meta new;
     
     if (mem_meta_data.type == NONE)
-        new = new_range(getpagesize());
+        new = new_range((size_t)getpagesize());
     else
-        new = new_range(mem_meta_data.size + getpagesize());
+        new = new_range(mem_meta_data.size + (size_t)getpagesize());
     new.type = NEXT;
     return (new);
 }
