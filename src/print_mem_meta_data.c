@@ -46,7 +46,7 @@ static void ft_putnbr_padded(unsigned long n, unsigned long padding, unsigned lo
     ft_putstr_padded(str, padding);
 }
 
-static void                print_one_meta_data(t_meta md)
+void                print_one_meta_data(t_meta md)
 {
     ft_putstr_padded(type_to_str(md.type), 6);
     if (md.ptr)

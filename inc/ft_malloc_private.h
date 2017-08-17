@@ -164,4 +164,10 @@ size_t    count_type(t_type t);
 * contiguous FREE mem
 */
 void    merge_freed(void);
+
+/*
+* brief: this function print a t_meta
+* param: <md> t_meta to print
+*/
+void    print_one_meta_data(t_meta md);
 #endif

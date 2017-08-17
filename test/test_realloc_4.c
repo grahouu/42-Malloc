@@ -31,20 +31,22 @@ int					main(void)
 	{
 		if (md[i].type == TRANGE)
 		{
-			print_mem_meta_data(110);
 			printf("[\x1b[31m FAIL \x1b[0m] %s\n", "reallocate small to large ranges: tiny range in meta datas");
+			print_one_meta_data(md[i]);
 			return (0);
 		}
 		if (md[i].type == SLICE && md[i].size > SMALL_SIZE && find_range_by_meta(md[i])->type == SRANGE)
 		{
-			print_mem_meta_data(110);
 			printf("[\x1b[31m FAIL \x1b[0m] %s\n", "reallocate small to large ranges: large slice in small range");
+			print_one_meta_data(md[i]);
+			print_one_meta_data(*find_range_by_meta(md[i]));
 			return (0);
 		}
 		if (md[i].type == SLICE && md[i].size <= SMALL_SIZE && find_range_by_meta(md[i])->type == LRANGE)
 		{
-			print_mem_meta_data(110);
 			printf("[\x1b[31m FAIL \x1b[0m] %s\n", "reallocate small to large ranges: small slice in large range");
+			print_one_meta_data(md[i]);
+			print_one_meta_data(*find_range_by_meta(md[i]));
 			return (0);
 		}
 	}
