@@ -6,15 +6,15 @@
 /*
 * Free all Tiny
 */
-int					main(void)
+int	main(void)
 {
 	char *prt_malloc;
-    t_meta *md;
+	t_meta *md;
 	size_t count = 10;
-    size_t count_ranges = 0;
+	size_t count_ranges = 0;
 	size_t count_none = 0;
 	const int MAX = 2, MIN = 0;
-    int     	random;
+	int     	random;
 
 	for (size_t i = 0; i <= count; ++i)
 	{
@@ -36,22 +36,22 @@ int					main(void)
 	md = (t_meta *)mem_meta_data.ptr;
 	for (size_t i = 0; i < mem_meta_data.size / sizeof(t_meta); ++i)
 	{
-        ft_free(md[i].ptr);
-    }
+		ft_free(md[i].ptr);
+	}
 
-    for (size_t i = 0; i < mem_meta_data.size / sizeof(t_meta); ++i)
+	for (size_t i = 0; i < mem_meta_data.size / sizeof(t_meta); ++i)
 	{
-        if (is_range(md[i]))
-            count_ranges++;
-        else if (md[i].type == NONE)
-            count_none++;
+		if (is_range(md[i]))
+			count_ranges++;
+		else if (md[i].type == NONE)
+			count_none++;
 	}
 
 	// print_mem_meta_data(0);
 
-    if (count_ranges == 3 && count_none == (mem_meta_data.size / sizeof(t_meta) - 3))
-	    printf("[\x1b[32m OK \x1b[0m]   %s\n", "Free All random");
-    else{
+	if (count_ranges == 3 && count_none == (mem_meta_data.size / sizeof(t_meta) - 3))
+		printf("[\x1b[32m OK \x1b[0m]   %s\n", "Free All random");
+	else{
 		printf("[\x1b[31m FAIL \x1b[0m] %s %zu %s %zu %s %zu\n", "Free All random - Count range:", count_ranges, " expected:3 Count none:", count_none, " expected:", (mem_meta_data.size / sizeof(t_meta) - 3));
 		//print_mem_meta_data(0);
 	}
