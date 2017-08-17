@@ -16,7 +16,7 @@ int					main(void)
 		if (!s)
 		{
 			printf("[\x1b[33m TERR \x1b[0m] %s\n", "Fill large ranges");
-			return (1);
+			return (0);
 		}
         memset((void *)s, 'a', SMALL_SIZE + 10);
         for (size_t j = 0; j < SMALL_SIZE + 10; ++j)
@@ -24,7 +24,7 @@ int					main(void)
             if (s[j] != 'a')
             {
                 printf("[\x1b[31m FAIL \x1b[0m] %s\n", "Fill large ranges");
-                return (1);
+                return (0);
             }
         }
 	}

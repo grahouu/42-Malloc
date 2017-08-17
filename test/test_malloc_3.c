@@ -16,7 +16,7 @@ int					main(void)
 		if (!s)
 		{
 			printf("[\x1b[31m FAIL \x1b[0m] %s\n", "Allocate small ranges: malloc returned null");
-			return (1);
+			return (0);
 		}
 	}
 
@@ -26,7 +26,7 @@ int					main(void)
 		if (md[i].type != SRANGE && md[i].type != SLICE && md[i].type != NONE)
 		{
 			printf("[\x1b[31m FAIL \x1b[0m] %s\n", "Allocate small ranges: bad meta datas");
-			return (1);
+			return (0);
 		}
 	}
 	printf("[\x1b[32m OK \x1b[0m]   %s\n", "Allocate small ranges");

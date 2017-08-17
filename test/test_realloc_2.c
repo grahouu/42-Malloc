@@ -16,13 +16,13 @@ int					main(void)
 		if (!s)
 		{
 			printf("[\x1b[31m FAIL \x1b[0m] %s\n", "reallocate small ranges: malloc returned null");
-			return (1);
+			return (0);
 		}
 		s = ft_realloc(s, SMALL_SIZE);
 		if (!s)
 		{
 			printf("[\x1b[31m FAIL \x1b[0m] %s\n", "reallocate small ranges: realloc returned null");
-			return (1);
+			return (0);
 		}
 	}
 
@@ -32,7 +32,7 @@ int					main(void)
 		if (md[i].type != SRANGE && md[i].type != SLICE && md[i].type != NONE && md[i].type != FREE)
 		{
 			printf("[\x1b[31m FAIL \x1b[0m] %s\n", "reallocate small ranges: bad meta datas");
-			return (1);
+			return (0);
 		}
 	}
 	printf("[\x1b[32m OK \x1b[0m]   %s\n", "reallocate small ranges");

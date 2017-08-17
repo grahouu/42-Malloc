@@ -16,7 +16,7 @@ int					main(void)
 		if (!s)
 		{
 			printf("[\x1b[31m TERR \x1b[0m] %s\n", "Fill small ranges");
-			return (1);
+			return (0);
 		}
         memset((void *)s, 'a', SMALL_SIZE);
         for (size_t j = 0; j < SMALL_SIZE; ++j)
@@ -24,7 +24,7 @@ int					main(void)
             if (s[j] != 'a')
             {
                 printf("[\x1b[31m FAIL \x1b[0m] %s\n", "Fill small ranges");
-                return (1);
+                return (0);
             }    
         }
 	}

@@ -19,7 +19,7 @@ int					main(void)
 		if (!prt_malloc)
 		{
 			printf("[\x1b[31m TERR \x1b[0m] %s\n", "Meta datas creation: malloc returned null");
-			return (1);
+			return (0);
 		}
 	}
 
