@@ -7,7 +7,7 @@ t_meta  *find_meta_data_by_ptr(void *ptr, t_type meta_type)
 
     it = (t_meta*)mem_meta_data.ptr;
     i = 0;
-    while (i < mem_meta_data.size / sizeof(t_meta) - 1)
+    while (i < mem_meta_data.size / sizeof(t_meta))
     {
         if (it[i].ptr == ptr && it[i].type == meta_type)
             return (&(it[i]));

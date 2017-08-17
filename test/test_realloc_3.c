@@ -15,7 +15,7 @@ int					main(void)
 		s = ft_malloc(SMALL_SIZE + 1);
 		if (!s)
 		{
-			printf("[\x1b[31m FAIL \x1b[0m] %s\n", "reallocate large ranges: malloc returned null");
+			printf("[\x1b[33m TERR \x1b[0m] %s\n", "reallocate large ranges: malloc returned null");
 			return (0);
 		}
 		s = ft_realloc(s, SMALL_SIZE + 500);
