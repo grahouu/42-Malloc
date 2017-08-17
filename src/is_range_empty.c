@@ -11,7 +11,7 @@ t_bool  is_range_empty(t_meta range)
     i = 0;
     while (i < mem_meta_data.size / sizeof(t_meta))
     {
-        if (it[i].type == SLICE && it[i].ptr >= range.ptr && (size_t)it[i].ptr <= end_ptr)
+        if (it[i].type == SLICE && is_slice_in_range(it[i], range))
             return (FALSE);
         ++i;
     }
