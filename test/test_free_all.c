@@ -34,12 +34,12 @@ int					main(void)
 	}
 
 	md = (t_meta *)mem_meta_data.ptr;
-	for (size_t i = 0; i <= mem_meta_data.size / sizeof(t_meta); ++i)
+	for (size_t i = 0; i < mem_meta_data.size / sizeof(t_meta); ++i)
 	{
         ft_free(md[i].ptr);
     }
 
-    for (size_t i = 0; i <= mem_meta_data.size / sizeof(t_meta); ++i)
+    for (size_t i = 0; i < mem_meta_data.size / sizeof(t_meta); ++i)
 	{
         if (is_range(md[i]))
             count_ranges++;
@@ -53,7 +53,7 @@ int					main(void)
 	    printf("[\x1b[32m OK \x1b[0m]   %s\n", "Free All random");
     else{
 		printf("[\x1b[31m FAIL \x1b[0m] %s %zu %s %zu %s %zu\n", "Free All random - Count range:", count_ranges, " expected:3 Count none:", count_none, " expected:", (mem_meta_data.size / sizeof(t_meta) - 3));
-		print_mem_meta_data(0);
+		//print_mem_meta_data(0);
 	}
 	return (0);
 }
