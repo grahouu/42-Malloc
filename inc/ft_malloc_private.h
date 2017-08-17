@@ -159,5 +159,9 @@ const char    *type_to_str(t_type t);
 */
 size_t    count_type(t_type t);
 
+/*
+* brief: this function find and merge all
+* contiguous FREE mem
+*/
 void    merge_freed(void);
 #endif
