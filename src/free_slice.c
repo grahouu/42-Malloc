@@ -11,7 +11,7 @@ static void		set_range_slices_to_none(t_meta range)
 	end_ptr = (size_t)(range.ptr + range.size);
 	while (i < mem_meta_data.size / sizeof(t_meta))
 	{
-		if (is_range(it[i]) == FALSE && it[i].ptr >= range.ptr 
+		if (is_range(it[i]) == FALSE && it[i].ptr >= range.ptr
 			&& (size_t)it[i].ptr < end_ptr)
 			it[i].type = NONE;
 		++i;
@@ -31,6 +31,6 @@ void			free_slice(t_meta *slice)
 			set_range_slices_to_none(*range);
 			if (count_type(range->type) > 1)
 				del_memory_range(range);
-		} 
+		}
 	}
 }

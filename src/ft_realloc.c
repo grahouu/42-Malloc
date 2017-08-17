@@ -1,6 +1,6 @@
 #include "ft_malloc_private.h"
 
-static  void	*ft_memcpy(void *src, void *dst, size_t const size)
+static void		*ft_memcpy(void *src, void *dst, size_t const size)
 {
 	unsigned char	*s_it;
 	unsigned char	*d_it;
@@ -22,7 +22,7 @@ void			*ft_realloc(void *ptr, size_t const size)
 	t_meta	*slice;
 	t_meta	*freed;
 	size_t	needed_size;
-	
+
 	slice = find_meta_data_by_ptr(ptr, SLICE);
 	if (!slice)
 		return (NULL);

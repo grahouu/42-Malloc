@@ -23,7 +23,6 @@ static void				ft_putstr_padded(char const *s, size_t padding)
 		++n;
 	write(1, s, n);
 	write(1, "                         ", padding - n);
-	
 }
 
 static void				ft_putnbr_padded(unsigned long n,
@@ -71,7 +70,7 @@ void					print_mem_meta_data(size_t counter)
 	if (counter == 0)
 		counter = mem_meta_data.size / sizeof(t_meta);
 	print_one_meta_data(mem_meta_data);
-	while(i < counter)
+	while (i < counter)
 	{
 		print_one_meta_data(it[i]);
 		++i;

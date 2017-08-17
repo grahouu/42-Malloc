@@ -19,10 +19,9 @@ static void		*find_mem_by_needed_size(const size_t size)
 	i = 0;
 	while (i < mem_meta_data.size / sizeof(t_meta))
 	{
-		if (it[i].type == FREE 
+		if (it[i].type == FREE
 			&& it[i].size >= size
-			&& is_valid_storage(*find_range_by_meta(it[i]), size)
-			)
+			&& is_valid_storage(*find_range_by_meta(it[i]), size))
 			return (truncate_freed_memory(&(it[i]), size));
 		if (is_range(it[i]) && it[i].size > size
 			&& is_valid_storage(it[i], size)
@@ -50,5 +49,5 @@ t_meta			*new_slice(const size_t size)
 	slice->type = SLICE;
 	slice->size = size;
 	slice->ptr = ptr;
-	return(slice);
+	return (slice);
 }

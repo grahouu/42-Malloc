@@ -2,8 +2,8 @@
 
 t_bool	is_range(const t_meta range)
 {
-	if (range.type == TRANGE 
-		|| range.type == SRANGE 
+	if (range.type == TRANGE
+		|| range.type == SRANGE
 		|| range.type == LRANGE)
 		return (TRUE);
 	return (FALSE);

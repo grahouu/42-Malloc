@@ -2,8 +2,8 @@
 
 static t_meta	*find_first_none_meta_data_in_meta_range(t_meta meta_range)
 {
-	size_t i;
-	t_meta *it;
+	size_t	i;
+	t_meta	*it;
 
 	it = (t_meta*)meta_range.ptr;
 	i = 0;
@@ -15,6 +15,7 @@ static t_meta	*find_first_none_meta_data_in_meta_range(t_meta meta_range)
 	}
 	return (NULL);
 }
+
 static t_meta	*copy_meta_data(t_meta src, t_meta dst)
 {
 	size_t i;
@@ -32,7 +33,7 @@ static t_meta	*copy_meta_data(t_meta src, t_meta dst)
 	return (&(d_it[i]));
 }
 
-t_meta	*find_first_none_meta_data(void)
+t_meta			*find_first_none_meta_data(void)
 {
 	t_meta	*none_meta;
 	t_meta	tmp;

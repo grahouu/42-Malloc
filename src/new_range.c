@@ -41,7 +41,7 @@ t_meta			new_memory_range(size_t size)
 t_meta			new_meta_range(void)
 {
 	t_meta new;
-	
+
 	if (mem_meta_data.type == NONE)
 		new = new_range((size_t)getpagesize());
 	else
@@ -52,6 +52,6 @@ t_meta			new_meta_range(void)
 
 void			del_memory_range(t_meta *range)
 {
-		munmap(range->ptr, range->size);
-		range->type = NONE;
+	munmap(range->ptr, range->size);
+	range->type = NONE;
 }
