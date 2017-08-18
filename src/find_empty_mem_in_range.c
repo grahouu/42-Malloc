@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   find_empty_mem_in_range.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlegendr <mlegendr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/18 15:11:40 by mlegendr          #+#    #+#             */
+/*   Updated: 2017/08/18 15:11:40 by mlegendr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_malloc_private.h"
 
 void	*find_empty_mem_in_range(const t_meta range, size_t size)

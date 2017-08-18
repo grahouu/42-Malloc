@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   find_first_none_meta_data.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlegendr <mlegendr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/18 15:11:43 by mlegendr          #+#    #+#             */
+/*   Updated: 2017/08/18 15:11:44 by mlegendr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_malloc_private.h"
 
 static t_meta	*find_first_none_meta_data_in_meta_range(t_meta meta_range)
