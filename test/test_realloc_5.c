@@ -26,8 +26,8 @@ int					main(void)
 		}
 	}
 
-	md = (t_meta *)mem_meta_data.ptr;
-	for (size_t i = 0; i < mem_meta_data.size / sizeof(t_meta); ++i)
+	md = (t_meta *)g_mem_meta_data.ptr;
+	for (size_t i = 0; i < g_mem_meta_data.size / sizeof(t_meta); ++i)
 	{
 		if (md[i].type == LRANGE)
 		{

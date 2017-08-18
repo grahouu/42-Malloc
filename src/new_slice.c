@@ -15,9 +15,9 @@ static void		*find_mem_by_needed_size(const size_t size)
 	t_meta	*it;
 	void	*ptr;
 
-	it = (t_meta*)mem_meta_data.ptr;
+	it = (t_meta*)g_mem_meta_data.ptr;
 	i = 0;
-	while (i < mem_meta_data.size / sizeof(t_meta))
+	while (i < g_mem_meta_data.size / sizeof(t_meta))
 	{
 		if (it[i].type == FREE
 			&& it[i].size >= size

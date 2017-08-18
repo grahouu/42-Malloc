@@ -42,10 +42,10 @@ t_meta			new_meta_range(void)
 {
 	t_meta new;
 
-	if (mem_meta_data.type == NONE)
+	if (g_mem_meta_data.type == NONE)
 		new = new_range((size_t)getpagesize());
 	else
-		new = new_range(mem_meta_data.size + (size_t)getpagesize());
+		new = new_range(g_mem_meta_data.size + (size_t)getpagesize());
 	new.type = NEXT;
 	return (new);
 }

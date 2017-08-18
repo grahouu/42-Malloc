@@ -11,9 +11,9 @@ static void		find_next(t_meta *freed)
 	size_t	i;
 	t_meta	*it;
 
-	it = (t_meta*)mem_meta_data.ptr;
+	it = (t_meta*)g_mem_meta_data.ptr;
 	i = 0;
-	while (i < mem_meta_data.size / sizeof(t_meta))
+	while (i < g_mem_meta_data.size / sizeof(t_meta))
 	{
 		if (it[i].type == FREE && it[i].ptr == freed->ptr + freed->size)
 		{
@@ -29,9 +29,9 @@ void			merge_freed(void)
 	size_t	i;
 	t_meta	*it;
 
-	it = (t_meta*)mem_meta_data.ptr;
+	it = (t_meta*)g_mem_meta_data.ptr;
 	i = 0;
-	while (i < mem_meta_data.size / sizeof(t_meta))
+	while (i < g_mem_meta_data.size / sizeof(t_meta))
 	{
 		if (it[i].type == FREE)
 			find_next(&(it[i]));

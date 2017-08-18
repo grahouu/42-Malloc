@@ -6,10 +6,10 @@ static void		set_range_slices_to_none(t_meta range)
 	size_t	end_ptr;
 	t_meta	*it;
 
-	it = (t_meta*)mem_meta_data.ptr;
+	it = (t_meta*)g_mem_meta_data.ptr;
 	i = 0;
 	end_ptr = (size_t)(range.ptr + range.size);
-	while (i < mem_meta_data.size / sizeof(t_meta))
+	while (i < g_mem_meta_data.size / sizeof(t_meta))
 	{
 		if (is_range(it[i]) == FALSE && it[i].ptr >= range.ptr
 			&& (size_t)it[i].ptr < end_ptr)

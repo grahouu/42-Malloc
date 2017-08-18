@@ -23,13 +23,13 @@ int					main(void)
 		}
 	}
 
-	md = (t_meta *)mem_meta_data.ptr;
-	for (size_t i = 0; i < mem_meta_data.size / sizeof(t_meta); ++i)
+	md = (t_meta *)g_mem_meta_data.ptr;
+	for (size_t i = 0; i < g_mem_meta_data.size / sizeof(t_meta); ++i)
 	{
 		ft_free(md[i].ptr);
 	}
 
-	for (size_t i = 0; i < mem_meta_data.size / sizeof(t_meta); ++i)
+	for (size_t i = 0; i < g_mem_meta_data.size / sizeof(t_meta); ++i)
 	{
 		if (md[i].type == TRANGE)
 			count_ranges++;
@@ -37,10 +37,10 @@ int					main(void)
 			count_none++;
 	}
 
-	if (count_ranges == 1 && count_none == (mem_meta_data.size / sizeof(t_meta) - 1))
+	if (count_ranges == 1 && count_none == (g_mem_meta_data.size / sizeof(t_meta) - 1))
 		printf("[\x1b[32m OK \x1b[0m]   %s\n", "Free Tiny");
 	else{
-		printf("[\x1b[31m FAIL \x1b[0m] %s %zu %s %zu %s %zu\n", "Free Tiny - Count range:", count_ranges, " expected:1 Count none:", count_none, " expected:", (mem_meta_data.size / sizeof(t_meta) - 1));
+		printf("[\x1b[31m FAIL \x1b[0m] %s %zu %s %zu %s %zu\n", "Free Tiny - Count range:", count_ranges, " expected:1 Count none:", count_none, " expected:", (g_mem_meta_data.size / sizeof(t_meta) - 1));
 		//print_mem_meta_data(0);
 	}
 	return (0);

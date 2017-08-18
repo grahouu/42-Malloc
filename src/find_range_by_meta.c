@@ -6,9 +6,9 @@ t_meta	*find_range_by_meta(const t_meta meta)
 	size_t	end_ptr;
 	t_meta	*it;
 
-	it = (t_meta*)mem_meta_data.ptr;
+	it = (t_meta*)g_mem_meta_data.ptr;
 	i = 0;
-	while (i < mem_meta_data.size / sizeof(t_meta))
+	while (i < g_mem_meta_data.size / sizeof(t_meta))
 	{
 		if (is_range(it[i]))
 		{

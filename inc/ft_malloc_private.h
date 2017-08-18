@@ -35,7 +35,7 @@ typedef struct	s_meta
 	size_t		size;
 }				t_meta;
 
-extern t_meta 	mem_meta_data;
+extern t_meta 	g_mem_meta_data;
 
 /**
 * brief: this function allocate a memory range which is biger or equal

@@ -66,10 +66,10 @@ void					print_mem_meta_data(size_t counter)
 	size_t	i;
 
 	i = 0;
-	it = (t_meta*)mem_meta_data.ptr;
+	it = (t_meta*)g_mem_meta_data.ptr;
 	if (counter == 0)
-		counter = mem_meta_data.size / sizeof(t_meta);
-	print_one_meta_data(mem_meta_data);
+		counter = g_mem_meta_data.size / sizeof(t_meta);
+	print_one_meta_data(g_mem_meta_data);
 	while (i < counter)
 	{
 		print_one_meta_data(it[i]);
