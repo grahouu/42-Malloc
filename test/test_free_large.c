@@ -41,7 +41,7 @@ int					main(void)
     if (count_ranges == 1 && count_none == (g_mem_meta_data.size / sizeof(t_meta) - 1))
         printf("[\x1b[32m OK \x1b[0m]   %s\n", "Free Large");
     else{
-        //print_mem_meta_data(0);
+        //show_alloc_mem(0);
         printf("[\x1b[31m FAIL \x1b[0m] %s %zu %s\n", "Free Large - Count range:", count_ranges, " expected:1");
     }
     return (0);

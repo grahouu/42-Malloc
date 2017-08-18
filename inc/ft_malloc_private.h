@@ -168,4 +168,9 @@ void			merge_freed(void);
 ** param: <md> t_meta to print
 **/
 void			print_one_meta_data(t_meta md);
+
+/**
+** brief: this function sort meta_data
+**/
+void			sort_meta_data(void);
 #endif

@@ -47,13 +47,13 @@ int	main(void)
 			count_none++;
 	}
 
-	// print_mem_meta_data(0);
+	// show_alloc_mem(0);
 
 	if (count_ranges == 3 && count_none == (g_mem_meta_data.size / sizeof(t_meta) - 3))
 		printf("[\x1b[32m OK \x1b[0m]   %s\n", "Free All random");
 	else{
 		printf("[\x1b[31m FAIL \x1b[0m] %s %zu %s %zu %s %zu\n", "Free All random - Count range:", count_ranges, " expected:3 Count none:", count_none, " expected:", (g_mem_meta_data.size / sizeof(t_meta) - 3));
-		//print_mem_meta_data(0);
+		//show_alloc_mem(0);
 	}
 	return (0);
 }

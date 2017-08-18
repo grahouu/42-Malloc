@@ -31,19 +31,19 @@ int					main(void)
 		if (md[i].type == LRANGE)
 		{
 			printf("[\x1b[31m FAIL \x1b[0m] %s\n", "reallocate small to tiny ranges: large range in meta datas");
-			print_mem_meta_data(110);
+			show_alloc_mem(110);
 			return (0);
 		}
 		if (md[i].type == SLICE && md[i].size > TINY_SIZE && find_range_by_meta(md[i])->type == TRANGE)
 		{
 			printf("[\x1b[31m FAIL \x1b[0m] %s\n", "reallocate small to tiny ranges: small slice in tiny range");
-			print_mem_meta_data(110);
+			show_alloc_mem(110);
 			return (0);
 		}
 		if (md[i].type == SLICE && md[i].size <= TINY_SIZE && find_range_by_meta(md[i])->type == SRANGE)
 		{
 			printf("[\x1b[31m FAIL \x1b[0m] %s\n", "reallocate small to tiny ranges: tiny slice in small range");
-			print_mem_meta_data(110);
+			show_alloc_mem(110);
 			return (0);
 		}
 	}
