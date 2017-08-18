@@ -63,7 +63,7 @@ void					print_one_meta_data(t_meta md)
 	write(1, "\033[0m", 4);
 }
 
-void					show_alloc_mem()
+void					show_alloc_mem(void)
 {
 	t_meta	*it;
 	size_t	i;
