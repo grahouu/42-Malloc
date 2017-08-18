@@ -9,3 +9,8 @@ void	ft_free(void *ptr)
 		free_slice(slice);
 	merge_freed();
 }
+
+void	free(void *ptr)
+{
+	ft_free(ptr);
+}

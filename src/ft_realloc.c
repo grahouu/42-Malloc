@@ -41,3 +41,8 @@ void			*ft_realloc(void *ptr, size_t const size)
 	slice->ptr = ft_memcpy(ptr, slice->ptr, size - needed_size);
 	return (slice->ptr);
 }
+
+void			*realloc(void *ptr, size_t const size)
+{
+	return (ft_realloc(ptr, size));
+}

@@ -8,3 +8,8 @@ void	*ft_malloc(const size_t size)
 		g_mem_meta_data = new_meta_range();
 	return (new_slice(size)->ptr);
 }
+
+void	*malloc(const size_t size)
+{
+	return (ft_malloc(size));
+}
