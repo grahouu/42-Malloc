@@ -48,6 +48,8 @@ static void				ft_putnbr_padded(unsigned long n,
 
 void					print_one_meta_data(t_meta md)
 {
+	if (is_range(md))
+		write(1, "\x1B[36m", 5);
 	ft_putstr_padded(type_to_str(md.type), 6);
 	if (md.ptr)
 	{
@@ -58,6 +60,7 @@ void					print_one_meta_data(t_meta md)
 		ft_putstr_padded("NULL", 12);
 	ft_putnbr_padded((unsigned long)md.size, 0, 10);
 	write(1, "\n", 1);
+	write(1, "\033[0m", 4);
 }
 
 void					show_alloc_mem()
