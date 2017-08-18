@@ -2,9 +2,9 @@
 
 # define FT_MALLOC_PRIVATE_H
 
-#include <unistd.h>
+# include <unistd.h>
 # include <stddef.h>
-#include <stdio.h> //norme
+# include <stdio.h>//
 
 # define TINY_NB_PAGES	10
 # define SMALL_NB_PAGES	100
@@ -36,8 +36,6 @@ typedef struct	s_meta
 }				t_meta;
 
 extern t_meta mem_meta_data;
-
-void		print_meta(t_meta meta);
 
 /*
 * brief: this function allocate a memory range which is biger or equal

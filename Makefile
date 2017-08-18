@@ -11,7 +11,6 @@ SRC =	src/ft_malloc.c				\
 		src/new_slice.c				\
 		src/free_slice.c				\
 		src/print_mem_meta_data.c	\
-		src/printer.c	\
 		src/find_first_none_meta_data.c \
 		src/is_slice_in_range.c \
 		src/is_range.c \
