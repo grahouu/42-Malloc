@@ -1,6 +1,7 @@
 #include "ft_malloc.h"
 #include "ft_malloc_private.h"
 #include <unistd.h>
+#include <stdio.h>
 
 /*
 * reallocate tiny ranges

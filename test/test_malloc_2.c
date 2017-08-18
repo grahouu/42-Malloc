@@ -2,6 +2,7 @@
 #include "ft_malloc_private.h"
 #include <unistd.h>
 #include <string.h>
+#include <stdio.h>
 
 /*
 * Fill tiny ranges

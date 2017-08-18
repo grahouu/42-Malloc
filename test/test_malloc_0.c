@@ -1,5 +1,6 @@
 #include "ft_malloc.h"
 #include "ft_malloc_private.h"
+#include <stdio.h>
 
 /*
 * Meta datas creation

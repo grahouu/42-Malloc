@@ -4,7 +4,6 @@
 
 # include <unistd.h>
 # include <stddef.h>
-# include <stdio.h>//
 
 # define TINY_NB_PAGES	10
 # define SMALL_NB_PAGES	100
