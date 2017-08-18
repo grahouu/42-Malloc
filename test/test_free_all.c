@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 /*
-* Free all Tiny
+** Free all Tiny
 */
 int	main(void)
 {
