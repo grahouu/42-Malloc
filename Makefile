@@ -1,4 +1,7 @@
-NAME = libftmalloc.a
+ifeq ($(HOSTTYPE),)
+	HOSTTYPE := $(shell uname -m)_$(shell uname -s)
+endif
+NAME = libft_malloc_$(HOSTTYPE).so
 CFLAGS = -Wall -Werror -Wextra -Wconversion
 #TESTFLAGS = -ggdb -fsanitize=address -fno-omit-frame-pointer
 INCLUDES = -I./inc/
