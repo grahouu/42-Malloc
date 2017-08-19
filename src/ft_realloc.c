@@ -1,4 +1,5 @@
 #include "ft_malloc_private.h"
+#include "ft_malloc.h"
 
 static void		*ft_memcpy(void *src, void *dst, size_t size)
 {
@@ -38,9 +39,9 @@ static void		*realloc_mem_in_range(void *ptr, size_t size)
 		return (ptr);
 	}
 	tmp = *slice;
-	free_slice(slice);
 	slice = new_slice(size);
 	ft_memcpy(ptr, slice->ptr, tmp.size);
+	free_slice(find_meta_data_by_ptr(ptr, SLICE));
 	return (slice->ptr);
 }
 

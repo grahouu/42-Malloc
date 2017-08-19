@@ -53,6 +53,11 @@ TEST_FREE_TINY=test_free_tiny.c
 TEST_FREE_SMALL=test_free_small.c
 TEST_FREE_LARGE=test_free_large.c
 TEST_FREE_ALL=test_free_all.c
+CTEST1=test1.c
+CTEST2=test2.c
+CTEST3=test3.c
+CTEST3B=test3bis.c
+CTEST4=test4.c
 
 all: $(NAME) finish
 
@@ -106,6 +111,24 @@ cmain_calloc:
 	@./test/libftmalloc_test
 	@make -C test/ fclean 1="../$(SNAME)" 2="$(TEST13)"
 
+cmain_shuffle:
+	# TEST SHUFFLE
+	@make -C test/ 1="../$(SNAME)" 2="$(CTEST1)"
+	@./test/libftmalloc_test
+	@make -C test/ fclean 1="../$(SNAME)" 2="$(CTEST1)"
+	@make -C test/ 1="../$(SNAME)" 2="$(CTEST2)"
+	@./test/libftmalloc_test
+	@make -C test/ fclean 1="../$(SNAME)" 2="$(CTEST2)"
+	@make -C test/ 1="../$(SNAME)" 2="$(CTEST3)"
+	@./test/libftmalloc_test
+	@make -C test/ fclean 1="../$(SNAME)" 2="$(CTEST3)"
+	@make -C test/ 1="../$(SNAME)" 2="$(CTEST3B)"
+	@./test/libftmalloc_test
+	@make -C test/ fclean 1="../$(SNAME)" 2="$(CTEST3B)"
+	@make -C test/ 1="../$(SNAME)" 2="$(CTEST4)"
+	@./test/libftmalloc_test
+	@make -C test/ fclean 1="../$(SNAME)" 2="$(CTEST4)"
+
 cmain_free:
 	# TEST FREE
 	@make -C test/ 1="../$(SNAME)" 2="$(TEST_FREE_TINY)"
@@ -142,7 +165,7 @@ cmain_realloc:
 	@./test/libftmalloc_test
 	@make -C test/ fclean 1="../$(SNAME)" 2="$(TEST12)"
 
-test: re cmain_malloc cmain_calloc cmain_free cmain_realloc fclean
+test: re cmain_malloc cmain_calloc cmain_free cmain_realloc cmain_shuffle fclean
 
 test_malloc: re cmain_malloc fclean
 
@@ -151,5 +174,7 @@ test_calloc: re cmain_calloc fclean
 test_free: re cmain_free fclean
 
 test_realloc: re cmain_realloc fclean
+
+test_shuffle: re cmain_shuffle fclean
 
 .PHONY: all build clean fclean re test

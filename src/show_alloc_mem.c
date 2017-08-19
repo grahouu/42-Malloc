@@ -66,7 +66,7 @@ void			show_alloc_mem(void)
 	it = (t_meta*)g_mem_meta_data.ptr;
 	while (i < g_mem_meta_data.size / sizeof(t_meta))
 	{
-		//if (it[i].type != NONE)
+		if (it[i].type != NONE)
 			print_one_meta_data(it[i]);
 		++i;
 	}
