@@ -1,4 +1,5 @@
 #include "ft_malloc_private.h"
+#include "ft_malloc.h"
 
 static void		*ft_memcpy(void *src, void *dst, size_t size)
 {
@@ -9,9 +10,9 @@ static void		*ft_memcpy(void *src, void *dst, size_t size)
 	s_it = (unsigned char *)src;
 	d_it = (unsigned char *)dst;
 	i = 0;
-	while (i > size)
+	while (i < size)
 	{
-		d_it = s_it;
+		d_it[i] = s_it[i];
 		++i;
 	}
 	return (dst);
@@ -21,6 +22,7 @@ static void		*realloc_mem_in_range(void *ptr, size_t size)
 {
 	t_meta	*slice;
 	t_meta	*freed;
+	t_meta	tmp;
 	size_t	needed_size;
 
 	slice = find_meta_data_by_ptr(ptr, SLICE);
@@ -36,9 +38,10 @@ static void		*realloc_mem_in_range(void *ptr, size_t size)
 		slice->size = size;
 		return (ptr);
 	}
-	free_slice(slice);
+	tmp = *slice;
 	slice = new_slice(size);
-	slice->ptr = ft_memcpy(ptr, slice->ptr, size - needed_size);
+	ft_memcpy(ptr, slice->ptr, tmp.size);
+	free_slice(find_meta_data_by_ptr(ptr, SLICE));
 	return (slice->ptr);
 }
 
@@ -46,6 +49,8 @@ void			*ft_realloc(void *ptr, size_t size)
 {
 	void	*re_ptr;
 
+	if (!ptr)
+		return (ft_malloc(size));
 	pthread_mutex_lock(&g_mutex);
 	re_ptr = realloc_mem_in_range(ptr, size);
 	pthread_mutex_unlock(&g_mutex);
