@@ -4,6 +4,7 @@
 
 # include <unistd.h>
 # include <stddef.h>
+# include <pthread.h>
 
 # define TINY_NB_PAGES	10
 # define SMALL_NB_PAGES	100
@@ -35,6 +36,7 @@ typedef struct	s_meta
 }				t_meta;
 
 extern t_meta	g_mem_meta_data;
+extern pthread_mutex_t	g_mutex;
 
 void			*ft_malloc(size_t size);
 void			ft_free(void *ptr);

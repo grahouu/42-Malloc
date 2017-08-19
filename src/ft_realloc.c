@@ -17,7 +17,7 @@ static void		*ft_memcpy(void *src, void *dst, size_t size)
 	return (dst);
 }
 
-void			*ft_realloc(void *ptr, size_t size)
+static void		*realloc_mem_in_range(void *ptr, size_t size)
 {
 	t_meta	*slice;
 	t_meta	*freed;
@@ -40,6 +40,16 @@ void			*ft_realloc(void *ptr, size_t size)
 	slice = new_slice(size);
 	slice->ptr = ft_memcpy(ptr, slice->ptr, size - needed_size);
 	return (slice->ptr);
+}
+
+void			*ft_realloc(void *ptr, size_t size)
+{
+	void	*re_ptr;
+
+	pthread_mutex_lock(&g_mutex);
+	re_ptr = realloc_mem_in_range(ptr, size);
+	pthread_mutex_unlock(&g_mutex);
+	return (re_ptr);
 }
 
 void			*realloc(void *ptr, size_t const size)
