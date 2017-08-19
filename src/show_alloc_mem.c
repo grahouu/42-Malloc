@@ -1,80 +1,72 @@
 #include "ft_malloc_private.h"
-#include <unistd.h>
 
-static unsigned long	ft_d_size(unsigned long n, unsigned long base)
+static size_t	used_mem(t_meta range)
 {
-	unsigned long			d_size;
+	size_t	i;
+	size_t	used_mem;
+	t_meta	*it;
 
-	d_size = 1;
-	while (n / base >= 1)
-	{
-		n = n / base;
-		d_size = d_size * base;
-	}
-	return (d_size);
-}
-
-static void				ft_putstr_padded(char const *s, size_t padding)
-{
-	size_t	n;
-
-	n = 0;
-	while (s[n] != '\0')
-		++n;
-	write(1, s, n);
-	write(1, "                         ", padding - n);
-}
-
-static void				ft_putnbr_padded(unsigned long n,
-							unsigned long padding, unsigned long base)
-{
-	char			str[20];
-	const char		*bstr = "0123456789abcdef";
-	unsigned long	d_size;
-	unsigned long	i;
-
+	it = (t_meta*)g_mem_meta_data.ptr;
 	i = 0;
-	d_size = ft_d_size(n, base);
-	while (d_size > 0)
+	used_mem = 0;
+	while (i < g_mem_meta_data.size / sizeof(t_meta))
 	{
-		str[i] = bstr[(n / d_size)];
-		n = n % d_size;
-		d_size = d_size / base;
-		i++;
+		if (it[i].type == SLICE && is_slice_in_range(it[i], range))
+			used_mem += it[i].size;
+		++i;
 	}
-	str[i] = '\0';
-	ft_putstr_padded(str, padding);
+	return (used_mem * 100 / range.size);
 }
 
-void					print_one_meta_data(t_meta md)
+static void		print_prefix(t_meta md)
 {
 	if (is_range(md))
 		write(1, "\x1B[36m", 5);
-	ft_putstr_padded(type_to_str(md.type), 6);
+	if (md.type == FREE)
+		write(1, "\x1B[35m", 5);
+	if (md.type == NONE)
+		write(1, "\x1B[32m", 5);
+	if (md.type != SLICE)
+		ft_putstr_padded(type_to_str(md.type), 6);
+	else
+		write(1, "      ", 6);
+}
+
+void			print_one_meta_data(t_meta md)
+{
+	print_prefix(md);
 	if (md.ptr)
 	{
 		write(1, "0x", 2);
 		ft_putnbr_padded((unsigned long)md.ptr, 10, 16);
+		ft_putstr_padded("- 0x", 0);
+		ft_putnbr_padded((unsigned long)md.ptr + md.size, 10, 16);
 	}
 	else
-		ft_putstr_padded("NULL", 12);
+		ft_putstr_padded("NULL", 26);
+	ft_putstr_padded(":", 2);
 	ft_putnbr_padded((unsigned long)md.size, 0, 10);
-	write(1, "\n", 1);
-	write(1, "\033[0m", 4);
+	write(1, " octets", 7);
+	if (is_range(md))
+	{
+		write(1, ", ", 2);
+		ft_putnbr_padded((unsigned long)used_mem(md), 0, 10);
+		ft_putstr_padded("% used", 0);
+	}
+	write(1, "\033[0m\n", 5);
 }
 
-void					show_alloc_mem(void)
+void			show_alloc_mem(void)
 {
 	t_meta	*it;
 	size_t	i;
 
+	sort_meta_data();
 	i = 0;
 	it = (t_meta*)g_mem_meta_data.ptr;
-	sort_meta_data();
-	print_one_meta_data(g_mem_meta_data);
 	while (i < g_mem_meta_data.size / sizeof(t_meta))
 	{
-		if (it[i].type != NONE)
+		//if (it[i].type != NONE)
 			print_one_meta_data(it[i]);
 		++i;
 	}

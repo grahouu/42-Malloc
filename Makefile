@@ -14,6 +14,7 @@ SRC =	src/ft_malloc.c				\
 		src/ft_free.c				\
 		src/ft_calloc.c				\
 		src/merge_freed.c				\
+		src/printer.c				\
 		src/sort_meta_data.c				\
 		src/ft_realloc.c			\
 		src/new_range.c				\

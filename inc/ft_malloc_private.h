@@ -179,4 +179,22 @@ void			print_one_meta_data(t_meta md);
 ** brief: this function sort meta_data
 */
 void			sort_meta_data(void);
+
+/*
+** brief: this function print a number
+** param: <n> number to print
+** param: <padding> min lenght of string, space
+**	will be added if number sze < min size
+** param: <base> base 2 -> 16
+*/
+void			ft_putnbr_padded(unsigned long n,
+					unsigned long padding, unsigned long base);
+
+/*
+** brief: this function print a string
+** param: <str> string to print
+** param: <padding> min lenght of string, space
+**	will be added if number sze < min size
+*/
+void			ft_putstr_padded(char const *s, size_t padding);
 #endif

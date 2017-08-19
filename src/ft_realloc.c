@@ -21,6 +21,7 @@ static void		*realloc_mem_in_range(void *ptr, size_t size)
 {
 	t_meta	*slice;
 	t_meta	*freed;
+	t_meta	tmp;
 	size_t	needed_size;
 
 	slice = find_meta_data_by_ptr(ptr, SLICE);
@@ -36,10 +37,10 @@ static void		*realloc_mem_in_range(void *ptr, size_t size)
 		slice->size = size;
 		return (ptr);
 	}
-	freed = slice;
+	tmp = *slice;
+	free_slice(slice);
 	slice = new_slice(size);
-	ft_memcpy(ptr, slice->ptr, freed->size);
-	free_slice(freed);
+	ft_memcpy(ptr, slice->ptr, tmp.size);
 	return (slice->ptr);
 }
 
