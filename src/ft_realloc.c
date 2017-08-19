@@ -9,9 +9,9 @@ static void		*ft_memcpy(void *src, void *dst, size_t size)
 	s_it = (unsigned char *)src;
 	d_it = (unsigned char *)dst;
 	i = 0;
-	while (i > size)
+	while (i < size)
 	{
-		d_it = s_it;
+		d_it[i] = s_it[i];
 		++i;
 	}
 	return (dst);
@@ -36,9 +36,10 @@ static void		*realloc_mem_in_range(void *ptr, size_t size)
 		slice->size = size;
 		return (ptr);
 	}
-	free_slice(slice);
+	freed = slice;
 	slice = new_slice(size);
-	slice->ptr = ft_memcpy(ptr, slice->ptr, size - needed_size);
+	ft_memcpy(ptr, slice->ptr, freed->size);
+	free_slice(freed);
 	return (slice->ptr);
 }
 
