@@ -8,6 +8,7 @@ INCLUDES = -I./inc/
 
 SRC =	src/ft_malloc.c				\
 		src/ft_free.c				\
+		src/ft_calloc.c				\
 		src/merge_freed.c				\
 		src/sort_meta_data.c				\
 		src/ft_realloc.c			\
@@ -42,6 +43,7 @@ TEST9=test_realloc_3.c
 TEST10=test_realloc_4.c
 TEST11=test_realloc_5.c
 TEST12=test_realloc_6.c
+TEST13=test_calloc_1.c
 TEST_FREE_TINY=test_free_tiny.c
 TEST_FREE_SMALL=test_free_small.c
 TEST_FREE_LARGE=test_free_large.c
@@ -91,6 +93,12 @@ cmain_malloc:
 	@./test/libftmalloc_test
 	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST6)"
 
+cmain_calloc:
+	# TEST CALLOC
+	@make -C test/ 1="../$(NAME)" 2="$(TEST13)"
+	@./test/libftmalloc_test
+	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST13)"
+
 cmain_free:
 	# TEST FREE
 	@make -C test/ 1="../$(NAME)" 2="$(TEST_FREE_TINY)"
@@ -127,9 +135,11 @@ cmain_realloc:
 	@./test/libftmalloc_test
 	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST12)"
 
-test: re cmain_malloc cmain_free cmain_realloc fclean
+test: re cmain_malloc cmain_calloc cmain_free cmain_realloc fclean
 
 test_malloc: re cmain_malloc fclean
+
+test_calloc: re cmain_calloc fclean
 
 test_free: re cmain_free fclean
 

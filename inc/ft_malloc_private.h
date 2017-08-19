@@ -36,9 +36,10 @@ typedef struct	s_meta
 
 extern t_meta	g_mem_meta_data;
 
-void			*ft_malloc(const size_t size);
+void			*ft_malloc(size_t size);
 void			ft_free(void *ptr);
-void			*ft_realloc(void *ptr, size_t const size);
+void			*ft_realloc(void *ptr, size_t size);
+void			*ft_calloc(size_t nmemb, size_t size);
 
 /*
 ** brief: this function allocate a memory range which is biger or equal
