@@ -1,8 +1,11 @@
 ifeq ($(HOSTTYPE),)
 	HOSTTYPE := $(shell uname -m)_$(shell uname -s)
 endif
-NAME = libft_malloc_$(HOSTTYPE).so
-CFLAGS = -Wall -Werror -Wextra -Wconversion
+NAMEO = libft_malloc
+NAME = $(NAMEO)_$(HOSTTYPE).so
+NAMELK = $(NAMEO).so
+CFLAGS = -Wall -Werror -Wextra -Wconversion -g
+SFLAGS =  -shared -Wno-error=unused-command-line-argument
 #TESTFLAGS = -ggdb -fsanitize=address -fno-omit-frame-pointer
 INCLUDES = -I./inc/
 
@@ -52,7 +55,9 @@ TEST_FREE_ALL=test_free_all.c
 all: $(NAME) finish
 
 $(NAME): $(OBJ)
-	@ar -rc $(NAME) $(OBJ) 
+	@ar -rc $(NAME) $(OBJ)
+	@#gcc $(CFLAGS) $(SFLAGS) $(INCLUDES) -o $(NAME) $(OBJ)
+	ln -sf $(NAME) $(NAMELK)
 	@echo This Job is Done sir !
 
 %.o: %.c 
