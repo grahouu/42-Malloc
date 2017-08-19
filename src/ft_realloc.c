@@ -46,6 +46,8 @@ void			*ft_realloc(void *ptr, size_t size)
 {
 	void	*re_ptr;
 
+	if (!ptr)
+		return (ft_malloc(size));
 	pthread_mutex_lock(&g_mutex);
 	re_ptr = realloc_mem_in_range(ptr, size);
 	pthread_mutex_unlock(&g_mutex);

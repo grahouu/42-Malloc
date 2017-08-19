@@ -4,6 +4,7 @@ endif
 NAMEO = libft_malloc
 NAME = $(NAMEO)_$(HOSTTYPE).so
 NAMELK = $(NAMEO).so
+SNAME = $(NAMEO).a
 CFLAGS = -Wall -Werror -Wextra -Wconversion -g
 SFLAGS =  -shared -Wno-error=unused-command-line-argument
 #TESTFLAGS = -ggdb -fsanitize=address -fno-omit-frame-pointer
@@ -55,8 +56,8 @@ TEST_FREE_ALL=test_free_all.c
 all: $(NAME) finish
 
 $(NAME): $(OBJ)
-	@ar -rc $(NAME) $(OBJ)
-	@#gcc $(CFLAGS) $(SFLAGS) $(INCLUDES) -o $(NAME) $(OBJ)
+	@ar -rc $(SNAME) $(OBJ)
+	@gcc $(CFLAGS) $(SFLAGS) $(INCLUDES) -o $(NAME) $(OBJ)
 	ln -sf $(NAME) $(NAMELK)
 	@echo This Job is Done sir !
 
@@ -76,69 +77,69 @@ finish:
 
 cmain_malloc:
 	# TEST MALLOC
-	@make -C test/ 1="../$(NAME)" 2="$(TEST0)"
+	@make -C test/ 1="../$(SNAME)" 2="$(TEST0)"
 	@./test/libftmalloc_test
-	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST0)"
-	@make -C test/ 1="../$(NAME)" 2="$(TEST1)"
+	@make -C test/ fclean 1="../$(SNAME)" 2="$(TEST0)"
+	@make -C test/ 1="../$(SNAME)" 2="$(TEST1)"
 	@./test/libftmalloc_test
-	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST1)"
-	@make -C test/ 1="../$(NAME)" 2="$(TEST2)"
+	@make -C test/ fclean 1="../$(SNAME)" 2="$(TEST1)"
+	@make -C test/ 1="../$(SNAME)" 2="$(TEST2)"
 	@./test/libftmalloc_test
-	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST2)"
-	@make -C test/ 1="../$(NAME)" 2="$(TEST3)"
+	@make -C test/ fclean 1="../$(SNAME)" 2="$(TEST2)"
+	@make -C test/ 1="../$(SNAME)" 2="$(TEST3)"
 	@./test/libftmalloc_test
-	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST3)"
-	@make -C test/ 1="../$(NAME)" 2="$(TEST4)"
+	@make -C test/ fclean 1="../$(SNAME)" 2="$(TEST3)"
+	@make -C test/ 1="../$(SNAME)" 2="$(TEST4)"
 	@./test/libftmalloc_test
-	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST4)"
-	@make -C test/ 1="../$(NAME)" 2="$(TEST5)"
+	@make -C test/ fclean 1="../$(SNAME)" 2="$(TEST4)"
+	@make -C test/ 1="../$(SNAME)" 2="$(TEST5)"
 	@./test/libftmalloc_test
-	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST5)"
-	@make -C test/ 1="../$(NAME)" 2="$(TEST6)"
+	@make -C test/ fclean 1="../$(SNAME)" 2="$(TEST5)"
+	@make -C test/ 1="../$(SNAME)" 2="$(TEST6)"
 	@./test/libftmalloc_test
-	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST6)"
+	@make -C test/ fclean 1="../$(SNAME)" 2="$(TEST6)"
 
 cmain_calloc:
 	# TEST CALLOC
-	@make -C test/ 1="../$(NAME)" 2="$(TEST13)"
+	@make -C test/ 1="../$(SNAME)" 2="$(TEST13)"
 	@./test/libftmalloc_test
-	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST13)"
+	@make -C test/ fclean 1="../$(SNAME)" 2="$(TEST13)"
 
 cmain_free:
 	# TEST FREE
-	@make -C test/ 1="../$(NAME)" 2="$(TEST_FREE_TINY)"
+	@make -C test/ 1="../$(SNAME)" 2="$(TEST_FREE_TINY)"
 	@./test/libftmalloc_test
-	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST_FREE_TINY)"
-	@make -C test/ 1="../$(NAME)" 2="$(TEST_FREE_SMALL)"
+	@make -C test/ fclean 1="../$(SNAME)" 2="$(TEST_FREE_TINY)"
+	@make -C test/ 1="../$(SNAME)" 2="$(TEST_FREE_SMALL)"
 	@./test/libftmalloc_test
-	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST_FREE_SMALL)"
-	@make -C test/ 1="../$(NAME)" 2="$(TEST_FREE_LARGE)"
+	@make -C test/ fclean 1="../$(SNAME)" 2="$(TEST_FREE_SMALL)"
+	@make -C test/ 1="../$(SNAME)" 2="$(TEST_FREE_LARGE)"
 	@./test/libftmalloc_test
-	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST_FREE_LARGE)"
-	@make -C test/ 1="../$(NAME)" 2="$(TEST_FREE_ALL)"
+	@make -C test/ fclean 1="../$(SNAME)" 2="$(TEST_FREE_LARGE)"
+	@make -C test/ 1="../$(SNAME)" 2="$(TEST_FREE_ALL)"
 	@./test/libftmalloc_test
-	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST_FREE_ALL)"
+	@make -C test/ fclean 1="../$(SNAME)" 2="$(TEST_FREE_ALL)"
 
 cmain_realloc:
 	# TEST REALLOC
-	@make -C test/ 1="../$(NAME)" 2="$(TEST7)"
+	@make -C test/ 1="../$(SNAME)" 2="$(TEST7)"
 	@./test/libftmalloc_test
-	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST7)"
-	@make -C test/ 1="../$(NAME)" 2="$(TEST8)"
+	@make -C test/ fclean 1="../$(SNAME)" 2="$(TEST7)"
+	@make -C test/ 1="../$(SNAME)" 2="$(TEST8)"
 	@./test/libftmalloc_test
-	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST8)"
-	@make -C test/ 1="../$(NAME)" 2="$(TEST9)"
+	@make -C test/ fclean 1="../$(SNAME)" 2="$(TEST8)"
+	@make -C test/ 1="../$(SNAME)" 2="$(TEST9)"
 	@./test/libftmalloc_test
-	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST9)"
-	@make -C test/ 1="../$(NAME)" 2="$(TEST10)"
+	@make -C test/ fclean 1="../$(SNAME)" 2="$(TEST9)"
+	@make -C test/ 1="../$(SNAME)" 2="$(TEST10)"
 	@./test/libftmalloc_test
-	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST10)"
-	@make -C test/ 1="../$(NAME)" 2="$(TEST11)"
+	@make -C test/ fclean 1="../$(SNAME)" 2="$(TEST10)"
+	@make -C test/ 1="../$(SNAME)" 2="$(TEST11)"
 	@./test/libftmalloc_test
-	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST11)"
-	@make -C test/ 1="../$(NAME)" 2="$(TEST12)"
+	@make -C test/ fclean 1="../$(SNAME)" 2="$(TEST11)"
+	@make -C test/ 1="../$(SNAME)" 2="$(TEST12)"
 	@./test/libftmalloc_test
-	@make -C test/ fclean 1="../$(NAME)" 2="$(TEST12)"
+	@make -C test/ fclean 1="../$(SNAME)" 2="$(TEST12)"
 
 test: re cmain_malloc cmain_calloc cmain_free cmain_realloc fclean
 
